@@ -18,5 +18,14 @@
     "dotenv-cli": "^6.0.0",
     "nodemon": "^2.0.20",
     "sqlite3": "^5.1.2"
+  },
+  "scripts": {
+    "sequelize": "sequelize",
+    "sequelize-cli": "sequelize-cli",
+    "start": "per-env",
+    "start:development": "nodemon ./bin/www",
+    "start:production": "node ./bin/www",
+    "build": "node psql-setup-script.js"
   }
+
 }

@@ -1,11 +1,11 @@
-/* ______________________________________________
-* -----------------------------------------------
-* PACKAGE IMPORTS, declares isProduction
-* variable to check what environment to load app
-* in, by checking environment key in
+/* _________________________________________________
+* --------------------------------------------------
+* PACKAGE & variable IMPORTS, declares
+* isProduction variable to check what environment
+* to load app in, by checking environment key in
 * backeng/config/index.js
-* _______________________________________________
-* -----------------------------------------------*/
+* __________________________________________________
+* --------------------------------------------------*/
 
 
 const express = require('express');
@@ -21,7 +21,7 @@ const { environment } = require('./config');
 const isProduction = environment === 'production';
 
 
-
+const routes = require('./routes');
 
 /* ______________________________________________
 * -----------------------------------------------
@@ -64,12 +64,18 @@ app.use(
     })
 );
 
+// Set the _csrf token and create req.csrfToken method
 app.use(
     csurf({
         cookie: {
             secure: isProduction,
-            sameSite: isProduction && 'Lax',
+            sameSite: isProduction && "Lax",
             httpOnly: true
         }
     })
 );
+
+app.use(routes);
+
+
+module.exports = app;
