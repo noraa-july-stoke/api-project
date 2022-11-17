@@ -16,7 +16,7 @@ const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 
-
+const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
 const isProduction = environment === 'production';
 
@@ -25,7 +25,7 @@ const routes = require('./routes');
 
 /* ______________________________________________
 * -----------------------------------------------
-* REQUIRES EXPRESS
+* initiates an instance of express called 'app'
 * _______________________________________________
 * -----------------------------------------------*/
 
@@ -33,7 +33,7 @@ const app = express();
 
 /* ______________________________________________
 * -----------------------------------------------
-* CONNECTIS MORGAN MIDDLEWARE FOR LOGGING INFO
+* CONNECTS MORGAN MIDDLEWARE FOR LOGGING INFO
 * ABOUT REQ / RES
 * _______________________________________________
 * -----------------------------------------------*/
@@ -76,6 +76,54 @@ app.use(
 );
 
 app.use(routes);
+
+/*_________________________________________________
+* -------------------------------------------------
+* Error-handling middleware
+* #1: unmatched requests. creates err from any req
+* that has not yet been matched with a route
+* #2 process sequelize db validation errors
+* #3 Error-Format & send via res.json()
+* _________________________________________________
+* -------------------------------------------------*/
+
+
+// #1
+app.use((_req, _res, next) => {
+    const err = new Error("The requested resource couldn't be found");
+    err.title = "Resource not found";
+    err.errors = ["The requested resource couldn't be found"];
+    err.status = 404;
+    next(err);
+});
+
+// #2
+
+//process sequelize errors
+app.use((err, _req, _res, next) => {
+    // check if error is a sequelize error
+    if (err instanceof ValidationError) {
+        err.errors = err.errors.map((e)=> e.message);
+        err.title = 'Validation error'
+    }
+    next(err);
+});
+
+
+// #3
+
+app.use((err,_req, res, _next) => {
+    res.status(err.status || 500);
+    console.error(err);
+    res.json({
+
+        title: err.title || 'Server Error',
+        message: err.message,
+        errors: err.errors,
+        stack: isProduction? null: err.stack
+
+    });
+});
 
 
 module.exports = app;
