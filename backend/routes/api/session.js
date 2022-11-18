@@ -4,6 +4,8 @@ const router = express.Router();
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
+
+// logs user in
 router.post('/', async (req, res, next) => {
     const { credential, password } = req.body;
 
@@ -23,9 +25,20 @@ router.post('/', async (req, res, next) => {
 
 });
 
+
+//Logs the user out
 router.delete('/', (_req,res) => {
     res.clearCookie('token');
     return res.json({ message: 'success'});
+});
+
+router.get('/', restoreUser, (req, res) => {
+    const { user } = req;
+    if (user) {
+        return res.json({
+            user: user.toSafeObject()
+        });
+    } else return res.json({});
 });
 
 
