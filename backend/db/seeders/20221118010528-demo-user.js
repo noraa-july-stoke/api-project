@@ -19,7 +19,7 @@ module.exports = {
      * }], {});
     */
 
-    await queryInterface.bulkInsert('users', [{
+    await queryInterface.bulkInsert('Users', [{
       email: 'user1@usernet.com',
       username: 'user1',
       firstName: 'User',
@@ -50,6 +50,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    await queryInterface.bulkDelete('users', null, { where: { firstName: 'User'}});
+    await queryInterface.bulkDelete('Users', null, { where: { firstName: 'User'}});
   }
 };
