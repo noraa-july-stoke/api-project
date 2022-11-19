@@ -1,6 +1,18 @@
 'use strict';
+
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define schema in options object
+}
+
+
 const { Model, Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
+
+
+
+
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     // returns object safe for use in a JWT

@@ -20,10 +20,24 @@ module.exports = {
     */
 
     await queryInterface.bulkInsert('Users', [{
-      email: 'noraa.july.stoke@gmail.com',
-      username: 'ItsNoraa',
-      firstName: 'Noraa',
-      lastName: 'Stoke',
+      email: 'user1@usernet.com',
+      username: 'user1',
+      firstName: 'User',
+      lastName: 'One',
+      hashedPassword: bcrypt.hashSync('password')
+    },
+  {
+      email: 'user2@usernet.com',
+      username: 'user2',
+      firstName: 'User',
+      lastName: 'Two',
+      hashedPassword: bcrypt.hashSync('password')
+    },
+  {
+      email: 'user3@usernet.com',
+      username: 'user3',
+      firstName: 'User',
+      lastName: 'Three',
       hashedPassword: bcrypt.hashSync('password')
     }], {});
   },
@@ -36,6 +50,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    await queryInterface.bulkDelete('Users', null, { where: { username: 'ItsNoraa'}});
+    await queryInterface.bulkDelete('Users', null, { where: { firstName: 'User'}});
   }
 };
