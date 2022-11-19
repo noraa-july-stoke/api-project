@@ -1,7 +1,11 @@
 'use strict';
 
+
+
 const { Model, Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
+
+
 
 
 
@@ -44,8 +48,13 @@ module.exports = (sequelize, DataTypes) => {
         hashedPassword
       });
 
+
       return await User.scope('currentUser').findByPk(user.id);
     }
+
+    static getCurrentUserById(id) {
+      return User.scope("currentUser").findByPk(id);
+    };
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
