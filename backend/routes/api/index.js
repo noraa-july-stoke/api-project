@@ -5,7 +5,6 @@ const usersRouter = require('./users.js');
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth.js');
 const { User } = require('../../db/models');
-
 // middleware connections
 
 // Connect restoreUser middleware to the API router
