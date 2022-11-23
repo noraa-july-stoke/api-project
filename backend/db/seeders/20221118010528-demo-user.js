@@ -19,27 +19,43 @@ module.exports = {
      * }], {});
     */
 
-    await queryInterface.bulkInsert('Users', [{
+    await queryInterface.bulkInsert('Users', [
+    {
       email: 'user1@usernet.com',
       username: 'user1',
       firstName: 'User',
       lastName: 'One',
       hashedPassword: bcrypt.hashSync('password')
     },
-  {
+    {
       email: 'user2@usernet.com',
       username: 'user2',
       firstName: 'User',
       lastName: 'Two',
       hashedPassword: bcrypt.hashSync('password')
     },
-  {
+    {
       email: 'user3@usernet.com',
       username: 'user3',
       firstName: 'User',
       lastName: 'Three',
       hashedPassword: bcrypt.hashSync('password')
-    }], {});
+    },
+    {
+      email: 'user4@usernet.com',
+      username: 'user4',
+      firstName: 'User',
+      lastName: 'Four',
+      hashedPassword: bcrypt.hashSync('password')
+    },
+    {
+      email: 'user5@usernet.com',
+      username: 'user5',
+      firstName: 'User',
+      lastName: 'Five',
+      hashedPassword: bcrypt.hashSync('password')
+    }
+  ], {});
   },
 
   async down (queryInterface, Sequelize) {

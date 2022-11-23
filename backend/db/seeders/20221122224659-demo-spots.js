@@ -12,7 +12,8 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Spots', [{
+    await queryInterface.bulkInsert('Spots', [
+      {
         ownerId: 1,
         address: "123 Shady Lane",
         city: "Nowhereville",
@@ -47,7 +48,8 @@ module.exports = {
         name: "Spot 3",
         description: "A cute little spot",
         price: 120.20
-      }], {});
+      }
+    ], {});
   },
 
   async down (queryInterface, Sequelize) {

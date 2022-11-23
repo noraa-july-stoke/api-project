@@ -12,6 +12,12 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+    await queryInterface.bulkInsert('ReviewImages', [
+      {
+        reviewId: 1,
+        url: "source.com/image"
+      }
+    ]);
   },
 
   async down (queryInterface, Sequelize) {
@@ -21,5 +27,9 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+
+    await queryInterface.bulkDelete('ReviewImages', null, {
+      where: { reviewId: [1] }
+    })
   }
 };

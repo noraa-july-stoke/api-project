@@ -12,17 +12,21 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Review.hasMany(models.ReviewImage, {
-        foreignKey: "reviewId"
+        foreignKey: "reviewId",
+        onDelete: "CASCADE",
+        hooks: true
       });
 
       Review.belongsTo(models.User,{
         foreignKey: "userId",
-        onDelete: "CASCADE"
+        onDelete: "CASCADE",
+        hooks: true
       });
 
       Review.belongsTo(models.Spot, {
         foreignKey: "spotId",
-        onDelete: "CASCADE"
+        onDelete: "CASCADE",
+        hooks: true
       });
 
     }
@@ -41,7 +45,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     stars: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        max: 5,
+        min: 0
+      }
     }
   }, {
     sequelize,

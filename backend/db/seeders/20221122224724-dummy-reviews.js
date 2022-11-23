@@ -12,6 +12,16 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+
+    await queryInterface.bulkInsert('Reviews', [
+      {
+        spotId: 2,
+        userId: 2,
+        review: "This place has roaches!!! Watch out!!!",
+        stars: 0
+      }
+
+    ]);
   },
 
   async down (queryInterface, Sequelize) {

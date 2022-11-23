@@ -12,12 +12,16 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Booking.belongsTo(models.User,{
-        foreignKey: "userId"
+        foreignKey: "userId",
+        onDelete: "CASCADE",
+        hooks: true
       });
 
       Booking.belongsTo(models.Spot, {
-        foreignKey: "spotId"
-      })
+        foreignKey: "spotId",
+        onDelete: "CASCADE",
+        hooks: true
+      });
 
     }
   }
@@ -39,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         isValid(date) {
-          if (date < this.startDate) {
+          if (date <= this.startDate) {
             throw new Error("Ending date must be after starting date")
           }
         }

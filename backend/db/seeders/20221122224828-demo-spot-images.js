@@ -12,6 +12,15 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+
+    await queryInterface.bulkInsert('SpotImages', [
+      {
+        spotId: 1,
+        url: "source.com/image",
+        preview: true
+      }
+
+    ]);
   },
 
   async down (queryInterface, Sequelize) {
@@ -21,5 +30,12 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+
+    await queryInterface.bulkDelete('SpotImages', null, {
+      where: { spotId: [1] }
+    } )
+
+
+
   }
 };
