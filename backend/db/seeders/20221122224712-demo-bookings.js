@@ -23,7 +23,7 @@ module.exports = {
 
 
 
-    await queryInterface.bulkInsert('Bookings', [
+    await queryInterface.bulkInsert(options, [
       {
         spotId: 1,
         userId: 4,
