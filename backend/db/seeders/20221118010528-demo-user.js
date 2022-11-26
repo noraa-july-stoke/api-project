@@ -6,13 +6,11 @@ if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
 
+options.tableName = 'Users';
+
 module.exports = {
-<<<<<<< HEAD
+
   up: async (queryInterface, Sequelize) => {
-    options.tableName = 'Users';
-    return queryInterface.bulkInsert(options, [{
-=======
-  async up (queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -25,7 +23,6 @@ module.exports = {
 
     await queryInterface.bulkInsert('Users', [
     {
->>>>>>> dev
       email: 'user1@usernet.com',
       username: 'user1',
       firstName: 'User',
@@ -67,7 +64,7 @@ module.exports = {
     options.tableName = 'Users';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      username: { [Op.in]: ['user1', 'user2', 'user3'] }
+      username: { [Op.in]: ['user1', 'user2', 'user3','user4','user5'] }
     }, {});
   }
 };
