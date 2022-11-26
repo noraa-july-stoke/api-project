@@ -118,7 +118,6 @@ res.json(spots)
 //-------------------------------------------------------------
 //-------------------------------------------------------------
 
-
 router.get('/:spotId', async (req, res) => {
 
     //get spotId from params in request object
