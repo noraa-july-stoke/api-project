@@ -19,6 +19,12 @@ module.exports = {
         userId: 2,
         review: "This place has roaches!!! Watch out!!!",
         stars: 0
+      },
+      {
+        spotId: 2,
+        userId: 1,
+        review: "Best place in town, don't listen to the other guy!!!",
+        stars: 5
       }
 
     ]);

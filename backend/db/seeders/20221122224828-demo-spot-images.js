@@ -18,7 +18,13 @@ module.exports = {
         spotId: 1,
         url: "source.com/image",
         preview: true
+      },
+      {
+        spotId: 1,
+        url: "source.com/image",
+        preview: false
       }
+
 
     ]);
   },
