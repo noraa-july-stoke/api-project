@@ -7,9 +7,25 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
+<<<<<<< HEAD
   up: async (queryInterface, Sequelize) => {
     options.tableName = 'Users';
     return queryInterface.bulkInsert(options, [{
+=======
+  async up (queryInterface, Sequelize) {
+    /**
+     * Add seed commands here.
+     *
+     * Example:
+     * await queryInterface.bulkInsert('People', [{
+     *   name: 'John Doe',
+     *   isBetaMember: false
+     * }], {});
+    */
+
+    await queryInterface.bulkInsert('Users', [
+    {
+>>>>>>> dev
       email: 'user1@usernet.com',
       username: 'user1',
       firstName: 'User',
@@ -29,7 +45,22 @@ module.exports = {
       firstName: 'User',
       lastName: 'Three',
       hashedPassword: bcrypt.hashSync('password')
-    }], {});
+    },
+    {
+      email: 'user4@usernet.com',
+      username: 'user4',
+      firstName: 'User',
+      lastName: 'Four',
+      hashedPassword: bcrypt.hashSync('password')
+    },
+    {
+      email: 'user5@usernet.com',
+      username: 'user5',
+      firstName: 'User',
+      lastName: 'Five',
+      hashedPassword: bcrypt.hashSync('password')
+    }
+  ], {});
   },
 
   down: async (queryInterface, Sequelize) => {
