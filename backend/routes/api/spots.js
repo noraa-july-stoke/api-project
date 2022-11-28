@@ -304,7 +304,7 @@ res.json()
 //-------------------------------------------------------------
 
 
-router.post('/', restoreUser, async (req, res) => {
+router.post('/', restoreUser, requireAuth, async (req, res) => {
 
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
@@ -519,20 +519,16 @@ router.delete("/:spotId", restoreUser, async (req, res) => {
             "message": "Spot couldn't be found",
             "statusCode": 404
         });
+    } else {
+        await spot.destroy();
+
+        res.status(200)
+        res.json({
+            "message": "Successfully deleted",
+            "statusCode": 200
+        });
     }
-
-    await spot.destroy();
-
-    res.status(200)
-    res.json({
-        "message": "Successfully deleted",
-        "statusCode": 200
-    });
 });
-
-
-
-
 
 
 
