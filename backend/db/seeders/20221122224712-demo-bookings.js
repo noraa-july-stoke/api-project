@@ -31,6 +31,18 @@ module.exports = {
         endDate: new Date('December 23, 2023')
       },
       {
+        spotId: 1,
+        userId: 3,
+        startDate: new Date('December 24, 2023'),
+        endDate: new Date('December 26, 2023')
+      },
+      {
+        spotId: 2,
+        userId: 3,
+        startDate: new Date('December 20, 2023'),
+        endDate: new Date('December 23, 2023')
+      },
+      {
         spotId: 2,
         userId: 4,
         startDate: new Date('December 24, 2023'),

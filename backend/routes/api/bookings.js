@@ -17,7 +17,7 @@ const { application } = require('express');
 //-----------------------------------------------------------------
 
 
-router.get('/current', restoreUser, async (req, res) => {
+router.get('/current', requireAuth, async (req, res) => {
 
     let Bookings = [];
     const userId = req.user.dataValues.id;

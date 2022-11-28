@@ -260,40 +260,49 @@ router.get('/:spotId/reviews', async (req, res) => {
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 
-router.get('/:spotId/bookings', restoreUser, async (req, res) => {
-    const userId = req.user.dataValues;
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
+    const userId = req.user.id;
     const spotId = req.params.spotId;
 
-    const spot = await Spot.findOne({
+    let spot = await Spot.findOne({
         where: {id:spotId}
     });
 
-    console.log(spot.toJSON())
-    let Bookings = [];
+    if(!spot) {
+        return res.status(404).send({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+        });
+    }
+
+    spot = spot.toJSON()
+
+    console.log(userId, spotId, spot.ownerId)
+
+    //console.log(spot.toJSON())
+    //let Bookings = [];
     let bookingsList;
 
-    if (userId === spot.ownerId) {
+    if (Number(userId) === Number(spot.ownerId)) {
         bookingsList = await Booking.findAll({
             where: { spotId },
+            attributes: {include: ['id']},
             include: {
                 model: User,
                 attributes: ['id', 'firstName', 'lastName']
             }
         });
 
+    } else {
+        bookingsList = await Booking.findAll({
+            where: { spotId },
+            attributes: ['spotId', 'startDate', 'endDate']
+        });
     }
-    // const bookingsList = await Booking.findAll({
-    //     where: {spotId}
-    // });
-
-    // for (let booking of bookingsList) {
-    //     booking = booking.toJSON();
-
-    // }
 
     console.log(bookingsList)
 
-res.json()
+res.json({Bookings:bookingsList})
 });
 
 
@@ -426,8 +435,6 @@ router.post('/:spotId/reviews', restoreUser, async (req, res) => {
             "statusCode": 403
         });
     }
-
-
 
     await newReview.save();
     //console.log(newReview)
