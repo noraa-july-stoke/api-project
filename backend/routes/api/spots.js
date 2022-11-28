@@ -78,30 +78,31 @@ router.get('/', restoreUser, async (req, res) => {
 //-------------------------------------------------------------
 
 
-router.get('/current', restoreUser, async (req, res) => {
+router.get('/current', restoreUser, requireAuth, async (req, res) => {
 
     const userId = req.user.dataValues.id;
-    if (!userId) res.json(new Error("No user logged in"))
-    console.log(userId)
+    if (!userId) res.json(new Error("No user logged in"));
+
     let spotList = await Spot.findAll({
-        where: {ownerId: userId }
+        where: {ownerId: userId },
+        include: [{ model: Review }]
     });
     let spots = [];
 
     for (let spot of spotList) {
 
         spot = spot.toJSON();
-        const reviewData = await Review.findAll({
-            attributes: {
-                include: [
-                    [
-                        Sequelize.fn("AVG", Sequelize.col("stars")),
-                        'reviewData'
-                    ]
-                ]
-            },
-            where: { spotId: spot.id }
+
+        let total = 0;
+        spot.Reviews.forEach(review => {
+            total += review.stars
         });
+
+        spot.avgRating = total / spot.Reviews.length;
+
+        delete spot.Reviews;
+
+
 
         let previewImage;
         previewImage = await SpotImage.findOne({
@@ -111,7 +112,7 @@ router.get('/current', restoreUser, async (req, res) => {
              }
         });
 
-        spot.reviewData = reviewData[0].dataValues.reviewData;
+        //spot.avgRating = reviewData[0].dataValues.reviewData;
         if (previewImage) spot.previewImage = previewImage.dataValues.url;
         else spot.previewImage = null;
         spots.push(spot);
@@ -120,8 +121,6 @@ router.get('/current', restoreUser, async (req, res) => {
     res.status(200)
     res.json(spots)
 
-
-res.json(spots)
 
 });
 
