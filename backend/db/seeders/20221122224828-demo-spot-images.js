@@ -31,9 +31,27 @@ module.exports = {
         spotId: 1,
         url: "source.com/image",
         preview: false
+      },
+      {
+        spotId: 2,
+        url: "source.com/image",
+        preview: true
+      },
+      {
+        spotId: 2,
+        url: "source.com/image",
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: "source.com/image",
+        preview: true
+      },
+      {
+        spotId: 3,
+        url: "source.com/image",
+        preview: false
       }
-
-
     ]);
   },
 
@@ -47,7 +65,7 @@ module.exports = {
 
     await queryInterface.bulkDelete(options, null, {
       where: { spotId: [1] }
-    } )
+    });
 
 
 
