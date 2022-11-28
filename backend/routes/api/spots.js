@@ -20,8 +20,7 @@ const { application } = require('express');
 //-------------------------------------------------------------
 
 
-router.get('/', async (req, res) => {
-
+router.get('/', restoreUser, async (req, res) => {
 
     //Gets list of spots
     let spotList = await Spot.findAll({
@@ -330,7 +329,7 @@ router.post('/', restoreUser, async (req, res) => {
         }
 
     const newSpot = Spot.build({
-        ownerId: req.user.dataValues.id,
+        ownerId: req.user.id,
         address,
         city,
         state,
