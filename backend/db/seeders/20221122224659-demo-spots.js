@@ -31,7 +31,7 @@ module.exports = {
         lng: -71.9670,
         name: "Spot 1",
         description: "A cute little spot",
-        price: 100.00
+        price: 100
       },
       {
         ownerId: 1,
@@ -43,7 +43,7 @@ module.exports = {
         lng: -71.9680,
         name: "Spot 2",
         description: "A cute little spot",
-        price: 110.10
+        price: 110
       },
       {
         ownerId: 2,
@@ -55,7 +55,7 @@ module.exports = {
         lng: -71.9640,
         name: "Spot 3",
         description: "A cute little spot",
-        price: 120.20
+        price: 120
       }
     ], {});
   },
