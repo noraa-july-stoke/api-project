@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { setTokenCookie, restoreUser } = require('../../utils/auth');
+const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
 
@@ -25,12 +25,11 @@ const validateLogin = [
 ]
 
 
-router.get('/', restoreUser, (req, res) => {
-    const { user } = req;
+router.get('/', restoreUser, requireAuth, (req, res) => {
+    let { user } = req;
     if (user) {
-        return res.json({
-            user: user.toSafeObject()
-        });
+        //user = user.toSafeObject();
+        return res.json(user);
     } else return res.json({user: null});
 });
 

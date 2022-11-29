@@ -211,7 +211,7 @@ router.get('/current', restoreUser, requireAuth, async (req, res) => {
     };
 
     res.status(200)
-    res.json(spots)
+    res.json({Spots:spots})
 
 
 });
@@ -236,15 +236,18 @@ router.get('/:spotId', async (req, res) => {
         include: [{ model: Review }]
     });
 
-    let total = 0;
-    spot.Reviews.forEach(review => {
-        total += review.stars
-    });
 
     if (!spot) return res.status(404).send({
         "message": "Spot couldn't be found",
         "statusCode": 404
     });
+
+    let total = 0;
+    spot.Reviews.forEach(review => {
+        total += review.stars
+    });
+
+    spot = spot.toJSON();
 
     // Find owner as Owner;
     const Owner = await User.findOne({
@@ -275,7 +278,7 @@ router.get('/:spotId', async (req, res) => {
     //append queries values into response object
     spot.SpotImages = SpotImages;
     spot.Owner = Owner;
-    spot.avgRating = total / spot.Reviews.length;
+    spot.avgStarRating = total / spot.Reviews.length;
     spot.numReviews = spot.Reviews.length;
     delete spot.Reviews;
 
@@ -442,7 +445,7 @@ router.post('/', restoreUser, requireAuth, async (req, res) => {
 //-------------------------------------------------------------
 
 
-router.post('/:spotId/images', restoreUser, async (req, res) => {
+router.post('/:spotId/images', restoreUser, requireAuth, async (req, res) => {
 
     const id = req.params.spotId;
     const spot = await Spot.findOne({ where: { id:id , ownerId: req.user.dataValues.id  }});
@@ -474,7 +477,7 @@ router.post('/:spotId/images', restoreUser, async (req, res) => {
 //-------------------------------------------------------------
 
 
-router.post('/:spotId/reviews', restoreUser, async (req, res) => {
+router.post('/:spotId/reviews', restoreUser, requireAuth, async (req, res) => {
 
     const { review, stars } = req.body;
     const spotId = req.params.spotId;
@@ -622,7 +625,7 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
 //-------------------------------------------------------------
 
 
-router.put('/:spotId', restoreUser, async (req, res) => {
+router.put('/:spotId', restoreUser, requireAuth, async (req, res) => {
     const id = req.params.spotId;
     const values = { address, city, state, country, lat, lng, name, description, price } = req.body;
     console.log(values, address)
@@ -683,7 +686,7 @@ router.put('/:spotId', restoreUser, async (req, res) => {
 //-------------------------------------------------------------
 //-------------------------------------------------------------
 
-router.delete("/:spotId", restoreUser, async (req, res) => {
+router.delete("/:spotId", restoreUser, requireAuth, async (req, res) => {
     const id = req.params.spotId;
     let spot = await Spot.findOne({ where: { id, ownerId: req.user.dataValues.id } });
     if(!spot) {
@@ -706,20 +709,3 @@ router.delete("/:spotId", restoreUser, async (req, res) => {
 
 
 module.exports = router;
-
-
-// const avgGradeData = await StudentClassroom.findAll({
-    // attributes: {
-    //     include: [
-    //         [
-    //             Sequelize.fn("AVG", Sequelize.col("grade")),
-    //             'avgAllGrades'
-    //         ]
-    //     ]
-    // },
-//     where: {
-//         classroomId: req.params.id
-//     }
-// });
-
-// classroom.avgGrade = avgGradeData[0].dataValues.avgAllGrades

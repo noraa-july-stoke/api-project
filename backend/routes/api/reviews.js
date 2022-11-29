@@ -16,7 +16,7 @@ const { application } = require('express');
 //-------------------------------------------------------------
 
 
-router.get('/current', restoreUser, async (req, res) => {
+router.get('/current', restoreUser, requireAuth, async (req, res) => {
 
     const Reviews = [];
     const id = req.user.dataValues.id;
@@ -89,7 +89,7 @@ router.get('/current', restoreUser, async (req, res) => {
 //-------------------------------------------------------------
 //-------------------------------------------------------------
 
-router.post('/:reviewId/images', restoreUser, async (req, res) => {
+router.post('/:reviewId/images', restoreUser, requireAuth, async (req, res) => {
 
     const { url } = req.body;
     const reviewId = req.params.reviewId;
@@ -146,7 +146,7 @@ router.post('/:reviewId/images', restoreUser, async (req, res) => {
 //-------------------------------------------------------------
 
 
-router.put('/:reviewId', restoreUser, async (req, res) => {
+router.put('/:reviewId', restoreUser, requireAuth, async (req, res) => {
 
     const reviewId = req.params.reviewId;
 
