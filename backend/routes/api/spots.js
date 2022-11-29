@@ -158,7 +158,7 @@ router.get('/', restoreUser, async (req, res) => {
 
     };
     res.status(200)
-    res.json({Spots:spots})
+    res.json({Spots:spots,page,size})
 
 });
 
