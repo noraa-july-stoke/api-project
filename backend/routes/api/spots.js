@@ -232,9 +232,13 @@ router.get('/:spotId', async (req, res) => {
 
     //Find proper spot with matching spotId
     let spot = await Spot.findOne({
-        where: {
-            id: spotId
-        }
+        where: {id: spotId},
+        include: [{ model: Review }]
+    });
+
+    let total = 0;
+    spot.Reviews.forEach(review => {
+        total += review.stars
     });
 
     if (!spot) return res.status(404).send({
@@ -251,22 +255,7 @@ router.get('/:spotId', async (req, res) => {
     });
 
     //find average rating
-    let reviewData = await Review.findAll({
-        attributes: {
-            include: [
-                [
-                    Sequelize.fn("AVG", Sequelize.col("stars")),
-                    'avgRating'
-                ],
-                [
-                    Sequelize.fn("COUNT", Sequelize.col("stars")),
-                    'numReviews'
-                ]
-            ],
-            group: ['Review.id']
-        },
-        where: { spotId: spot.id }
-    });
+
 
     let SpotImages = [];
 
@@ -281,15 +270,14 @@ router.get('/:spotId', async (req, res) => {
         SpotImages.push(image.dataValues)
     }
 
-    console.log(SpotImages)
-
 
 
     //append queries values into response object
-    spot.dataValues.numReviews = reviewData[0].dataValues.numReviews;
-    spot.dataValues.avgStarRating = reviewData[0].dataValues.avgRating;
-    spot.dataValues.SpotImages = SpotImages;
-    spot.dataValues.Owner = Owner;
+    spot.SpotImages = SpotImages;
+    spot.Owner = Owner;
+    spot.avgRating = total / spot.Reviews.length;
+    spot.numReviews = spot.Reviews.length;
+    delete spot.Reviews;
 
     res.json(spot)
 
