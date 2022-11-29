@@ -551,7 +551,8 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
 
     if (userId === spot.ownerId) {
         return res.status(403).send({
-            "message": "Cannot create a booking for a spot you own"
+            "message": "Cannot create a booking for a spot you own",
+            "statusCode": 403
         });
     }
 

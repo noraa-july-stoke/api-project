@@ -78,7 +78,8 @@ router.put('/:bookingId', restoreUser, requireAuth, async (req, res) => {
         });
     }
 
-    const editBooking = await Booking.findByPk(bookingId);
+    console.log(bookingId)
+    const editBooking = await Booking.findByPk(+bookingId);
     if (!editBooking) {
         return res.status(404).send({
             "message": "Booking couldn't be found",
