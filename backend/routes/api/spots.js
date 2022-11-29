@@ -126,8 +126,7 @@ router.get('/current', restoreUser, requireAuth, async (req, res) => {
 
 //-------------------------------------------------------------
 //-------------------------------------------------------------
-
-
+// GET DETAILS OF SPOT BY ID
 //-------------------------------------------------------------
 //-------------------------------------------------------------
 
@@ -171,7 +170,8 @@ router.get('/:spotId', async (req, res) => {
                     Sequelize.fn("COUNT", Sequelize.col("stars")),
                     'numReviews'
                 ]
-            ]
+            ],
+            group: Review.id
         },
         where: { spotId: spot.id }
     });
