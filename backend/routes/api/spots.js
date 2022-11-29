@@ -7,6 +7,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { Spot, User, Review, SpotImage, Sequelize, ReviewImage, Booking } = require('../../db/models');
 const { application } = require('express');
+const {Op} = require('sequelize');
 
 
 //-------------------------------------------------------------
@@ -22,9 +23,100 @@ const { application } = require('express');
 
 router.get('/', restoreUser, async (req, res) => {
 
-    //Gets list of spots
+    let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
+    let pagination = {};
+    let where = {};
+
+    if (maxLat || minLat) {
+        where.lat = {}
+    }
+    if (maxLng || minLng) {
+        where.lng = {}
+    }
+    if (maxPrice || minPrice) {
+        where.price = {}
+    }
+
+    const err = {
+        "message": "Validation Error",
+        "statusCode": 400,
+        "errors": {
+            "page": "Page must be greater than or equal to 1",
+            "size": "Size must be greater than or equal to 1",
+            "maxLat": "Maximum latitude is invalid",
+            "minLat": "Minimum latitude is invalid",
+            "minLng": "Maximum longitude is invalid",
+            "maxLng": "Minimum longitude is invalid",
+            "minPrice": "Maximum price must be greater than or equal to 0",
+            "maxPrice": "Minimum price must be greater than or equal to 0"
+        }
+    }
+
+    if (!page) page = 1;
+    if (!size) size = 20;
+
+    if (page < 0 || page > 10){
+        return res.status(400).send(err)
+    }
+
+    if (page < 0 || page > 10) {
+        return res.status(400).send(err)
+    }
+
+    if (size < 0 || size > 20) {
+        return res.status(400).send(err)
+    }
+
+    if (minLat){
+        if (isNaN(Number(minLat))) {
+            return res.status(400).send(err)
+        }
+        Object.assign(where.lat, {[Op.gte]: +minLat});
+    }
+
+    if (maxLat) {
+        if (isNaN(Number(maxLat))) {
+            return res.status(400).send(err)
+        }
+        Object.assign(where.lat, {[Op.lte]: +maxLat});
+    }
+
+    if (minLng) {
+        if (isNaN(Number(minLng))) {
+            return res.status(400).send(err);
+        }
+        Object.assign(where.lng, { [Op.gte]: +minLng });
+    }
+
+    if (maxLng) {
+        if (isNaN(Number(maxLng))) {
+            return res.status(400).send(err)
+        }
+        Object.assign(where.lng, { [Op.lte]: +maxLat });
+    }
+
+    if (minPrice) {
+        if (isNaN(Number(minPrice)) || +minPrice < 0) {
+            return res.status(400).send(err)
+        }
+        Object.assign(where.price, { [Op.gte]: +minPrice });
+
+    }
+
+    if (maxPrice) {
+        if (isNaN(Number(maxPrice)) || +maxPrice < 0) {
+            return res.status(400).send(err)
+        }
+        Object.assign(where.price, { [Op.lte]: +maxPrice });
+    }
+
+    pagination.limit = +size;
+    pagination.offset = +size * (+page - 1);
+
     let spotList = await Spot.findAll({
-        include: [{model: Review}]
+        include: [{model: Review}],
+        ...pagination,
+        where
     });
     let spots = [];
 
@@ -171,7 +263,7 @@ router.get('/:spotId', async (req, res) => {
                     'numReviews'
                 ]
             ],
-            group: Review.id
+            group: ['Review.id']
         },
         where: { spotId: spot.id }
     });
