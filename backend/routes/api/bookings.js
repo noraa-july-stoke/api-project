@@ -9,7 +9,6 @@ const { Spot, User, Review, SpotImage, Sequelize, ReviewImage, Booking } = requi
 const { application } = require('express');
 
 
-
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 // GET CURRENT USER'S BOOKINGS
