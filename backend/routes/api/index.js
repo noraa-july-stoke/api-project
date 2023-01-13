@@ -32,10 +32,9 @@ router.use('/spot-images', spotImagesRouter);
 
 router.use('/review-images', reviewImagesRouter);
 
-router.post('/test', (req, res) => {
-    res.json({requestBody: req.body});
-
-});
+// router.post('/test', (req, res) => {
+//     res.json({requestBody: req.body});
+// });
 
 
 module.exports = router;
@@ -111,10 +110,8 @@ module.exports = router;
 // });
 
 
-// // test route #3
-// router.post('/test', (req,res) => {
-//     res.json({requestBody: req.body});
-// });
+// test route #3
+
 
 
 // // test route #4
