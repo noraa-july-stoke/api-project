@@ -29,7 +29,7 @@ router.get('/', restoreUser, requireAuth, (req, res) => {
     let { user } = req;
     if (user) {
         //user = user.toSafeObject();
-        return res.json(user);
+        return res.json({user});
     } else return res.json({user: null});
 });
 
@@ -50,7 +50,7 @@ router.post('/', validateLogin, async (req, res, next) => {
     const token = await setTokenCookie(res, user);
     console.log(token)
 
-    return res.json({...user.toJSON(), token});
+    return res.json({user:{...user.toJSON(), token}});
 
 });
 
