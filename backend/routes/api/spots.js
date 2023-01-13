@@ -162,7 +162,6 @@ router.get('/', restoreUser, async (req, res) => {
 
 });
 
-
 //-------------------------------------------------------------
 //-------------------------------------------------------------
 
@@ -182,7 +181,6 @@ router.get('/current', restoreUser, requireAuth, async (req, res) => {
     let spots = [];
 
     for (let spot of spotList) {
-
         spot = spot.toJSON();
 
         let total = 0;
@@ -193,8 +191,6 @@ router.get('/current', restoreUser, requireAuth, async (req, res) => {
         spot.avgRating = total / spot.Reviews.length;
 
         delete spot.Reviews;
-
-
 
         let previewImage;
         previewImage = await SpotImage.findOne({

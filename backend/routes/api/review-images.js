@@ -22,6 +22,7 @@ router.delete('/:imageId', requireAuth, async (req, res) => {
     const userId = req.user.id;
     const imageId = req.params.imageId;
 
+
     const deleteImage = await ReviewImage.findOne({
         where: { id: imageId },
         include: [{ model: Review }]
