@@ -1,7 +1,14 @@
 import { csrfFetch }from './csrf';
 
+
+
 const LOGIN = 'session/actionLogin';
 const LOGOUT = 'session/actionLogout';
+const SIGNUP = 'SIGNUP';
+
+/* ----------------------------------------------------------
+Action creators
+------------------------------------------------------------*/
 
 
 const actionLogin = (user) => {
@@ -15,6 +22,13 @@ const actionLogout = () => {
         type: LOGOUT
 }};
 
+const actionSignup = (user) => {
+    return {
+        type: SIGNUP,
+        payload: user
+}};
+
+
 export const thunkRestoreUser = () => async (dispatch) => {
 
     //Method & body aren't required with a 'GET' fetch;
@@ -24,7 +38,31 @@ export const thunkRestoreUser = () => async (dispatch) => {
     return response;
 };
 
+/* ----------------------------------------------------------
+Thunk Action Creators
+------------------------------------------------------------*/
+
+
+export const thunkSignup = (user) => async (dispatch) => {
+    const { username, firstName, lastName, email, password } = user;
+    const response = await csrfFetch("/api/users", {
+        method: "POST",
+        body: JSON.stringify({
+            username,
+            firstName,
+            lastName,
+            email,
+            password,
+        }),
+    });
+    const data = await response.json();
+    dispatch(actionLogin(data.user));
+    return response;
+};
+
+
 export const thunkLogin = (user) => async (dispatch) => {
+
     const { credential, password } = user;
     const response = await csrfFetch('/api/session', {
         method: 'POST',
@@ -54,6 +92,10 @@ const sessionReducer = (state = initialState, action) => {
 
         case LOGOUT:
             newState.user = null;
+            return newState;
+
+        case SIGNUP:
+            newState.user = action.payload;
             return newState;
 
         default:
