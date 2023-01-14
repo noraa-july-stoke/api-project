@@ -1,15 +1,17 @@
 /* --------------------------------------------------------
 Sign Up Form Component
 -------------------------------------------------------- */
-//Imports
 
-import {useState} from 'react';
+//Node Library Imports
+import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from "react-router-dom";
+
+//Local Module Imports
 import * as sessionActions from "../../store/session";
 
-
-
+//Style Imports
+import './SignupForm.css';
 
 
 //React funcitonal Component that displays controlled inputs for user signup
@@ -28,22 +30,23 @@ const SignupFormPage = () => {
 
     if (sessionUser) return <Redirect to={"/"} />;
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password === confirmPassword ) {
             setErrors([]);
-            return dispatch(sessionActions.thunkSignup({ email, username, firstName, lastName, password}))
+            return dispatch(sessionActions.thunkSignup({ email, username, firstName, lastName, password }))
                 .catch(async (res) => {
                     const data=await res.json();
                     if (data && data.errors) setErrors(data.errors);
-    })}};
+        })}
+        return setErrors(['Confirm Password field must be the same as the Password field']);
+    };
 
 
     return (
 
         <form onSubmit={handleSubmit}>
+            Sign Up
 
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}

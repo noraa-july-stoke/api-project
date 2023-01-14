@@ -25,8 +25,7 @@ const Root = () => {
         <App />
       </BrowserRouter>
     </ReduxProvider>
-  );
-}
+)};
 
 ReactDOM.render(
   <React.StrictMode>
