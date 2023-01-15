@@ -10,12 +10,17 @@ export async function csrfFetch(url, options = {}) {
     // "application/json", and set the "XSRF-TOKEN" header to the value of the
     // "XSRF-TOKEN" cookie
     if (options.method.toUpperCase() !== 'GET') {
-        options.headers['Content-Type'] =
-            options.headers['Content-Type'] || 'application/json';
+        options.headers['Content-Type'] = options.headers['Content-Type'] || 'application/json';
         options.headers['XSRF-Token'] = Cookies.get('XSRF-TOKEN');
     }
+
+    // !@#$ - This needs fixed or something???
+
     // call the default window's fetch with the url and the options passed in
+    // console.log(url, options)
+
     const res = await window.fetch(url, options);
+    // console.log(res)
 
     // if the response status code is 400 or above, then throw an error with the
     // error being the response
