@@ -13,9 +13,12 @@ function ProfileButton({ user }) {
         setShowMenu(true);
     };
 
+
     //!@#$
+    //this is doing something weird here. not opening menu at all. everything seems right?
 
     useEffect(() => {
+        // console.log(ulRef)
         if (!showMenu) return;
 
         const closeMenu = (e) => {
