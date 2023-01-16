@@ -118,7 +118,7 @@ const SignupFormPage = () => {
                 />
             </label>
 
-            <button type="submit" className="log-in-button">Log In</button>
+            <button type="submit" className="log-in-button">Sign Up</button>
 
         </form>
 )}
