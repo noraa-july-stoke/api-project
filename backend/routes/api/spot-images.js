@@ -33,7 +33,6 @@ router.delete('/:imageId', requireAuth, async (req, res) => {
         })
     }
 
-    console.log(deleteImage.toJSON())
     if (deleteImage.Spot.ownerId !== userId) {
         return res.status(403).send({
             "message": "you are not authorized to delete this"

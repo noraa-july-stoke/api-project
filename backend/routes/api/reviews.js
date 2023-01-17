@@ -70,7 +70,6 @@ router.get('/current', restoreUser, requireAuth, async (req, res) => {
         review.User = user;
         review.Spot = spot;
         review.ReviewImages = imgArr;
-        //console.log(review)
         Reviews.push(review)
     }
     //const ReviewImages = await ReviewImage.findAll({where:{spotId:}})
@@ -197,7 +196,6 @@ router.delete('/:reviewId', restoreUser, requireAuth, async (req, res) => {
 
     const deleteReview = await Review.findByPk(id);
 
-    console.log(deleteReview)
 
     if (!deleteReview){
         return res.status(404).send({

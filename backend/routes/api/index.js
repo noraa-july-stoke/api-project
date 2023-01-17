@@ -32,6 +32,9 @@ router.use('/spot-images', spotImagesRouter);
 
 router.use('/review-images', reviewImagesRouter);
 
+
+//Uncomment below route to test basic functionality
+
 // router.post('/test', (req, res) => {
 //     res.json({requestBody: req.body});
 // });

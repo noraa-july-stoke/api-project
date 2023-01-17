@@ -223,7 +223,6 @@ router.get('/:spotId', async (req, res) => {
 
     //get spotId from params in request object
     const spotId = req.params.spotId;
-    console.log(spotId)
 
 
     //Find proper spot with matching spotId
@@ -313,7 +312,6 @@ router.get('/:spotId/reviews', async (req, res) => {
             },
             attributes: ['id', 'firstName', 'lastName']
         });
-        //console.log(review)
 
         let imgArr = [];
         let imageList = await ReviewImage.findAll({
@@ -354,10 +352,6 @@ router.get('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
 
     spot = spot.toJSON()
 
-    console.log(userId, spotId, spot.ownerId)
-
-    //console.log(spot.toJSON())
-    //let Bookings = [];
     let bookingsList;
 
     if (Number(userId) === Number(spot.ownerId)) {
@@ -376,8 +370,6 @@ router.get('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
             attributes: ['spotId', 'startDate', 'endDate']
         });
     }
-
-    console.log(bookingsList)
 
 res.json({Bookings:bookingsList})
 });
@@ -514,7 +506,6 @@ router.post('/:spotId/reviews', restoreUser, requireAuth, async (req, res) => {
     }
 
     await newReview.save();
-    //console.log(newReview)
 
     const resReview = await Review.findOne({
         where: {createdAt: newReview.createdAt, userId:userId, spotId:spotId },
@@ -588,11 +579,6 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
                 }
             });
        };
-
-
-
-
-        console.log(start, end);
     }
 
     const newBooking = Booking.build({
@@ -624,7 +610,6 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
 router.put('/:spotId', restoreUser, requireAuth, async (req, res) => {
     const id = req.params.spotId;
     const values = { address, city, state, country, lat, lng, name, description, price } = req.body;
-    console.log(values, address)
     const spot = await Spot.findOne({ where: { id: id, ownerId: req.user.dataValues.id } });
 
     if (!spot) {

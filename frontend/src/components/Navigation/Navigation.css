@@ -6,3 +6,12 @@
 /* .hidden{
     display: none;
 } */
+
+ul > li {
+    padding: 3px;
+}
+
+#navigation-container {
+    display: flex;
+    flex-direction: row;
+}

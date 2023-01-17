@@ -38,7 +38,7 @@ const SignupFormPage = () => {
                 .catch(async (res) => {
                     const data=await res.json();
                     if (data && data.errors) setErrors(data.errors);
-        })}
+        })};
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
 
@@ -120,7 +120,7 @@ const SignupFormPage = () => {
             <button type="submit" className="log-in-button">Sign Up</button>
 
         </form>
-)}
+)};
 
 
 export default SignupFormPage;

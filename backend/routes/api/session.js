@@ -36,7 +36,6 @@ router.get('/', restoreUser, requireAuth, (req, res) => {
 // logs user in
 router.post('/', validateLogin, async (req, res, next) => {
     const { credential, password } = req.body;
-
     const user = await User.login({ credential, password });
 
     if (!user) {
@@ -48,7 +47,6 @@ router.post('/', validateLogin, async (req, res, next) => {
     }
 
     const token = await setTokenCookie(res, user);
-    console.log(token)
 
     return res.json({user:{...user.toJSON(), token}});
 
