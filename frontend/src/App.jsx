@@ -8,7 +8,7 @@ import { Route, Switch } from "react-router-dom";
 // Local Module/Function Component Imports
 import Navigation from "./components/Navigation";
 
-import * as sessionActions from "./store/session";
+import * as sessionActions from "./store/session.js";
 
 const App = () => {
   const dispatch = useDispatch();
