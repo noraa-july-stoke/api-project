@@ -18,7 +18,7 @@ function Navigation({ isLoaded }) {
                 </li>
             )}
         </ul>
-    );
+    )
 }
 
 export default Navigation;
