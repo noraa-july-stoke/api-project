@@ -1,0 +1,3 @@
+const SpotCard = () => {
+    return null;
+}

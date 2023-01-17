@@ -112,7 +112,8 @@ export const thunkLogout = () => async (dispatch) => {
 
 
 //Reducer For Session Activities. (login, logout, check current user/login status)
-const initialState = { user: null }
+const initialState = { user: null };
+
 const sessionReducer = (state = initialState, action) => {
 
     let newState = Object.assign({}, state);
