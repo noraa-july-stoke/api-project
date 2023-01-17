@@ -4,9 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from "../../context/Modal";
 import './LoginForm.css';
 
-
-
-
 const LoginFormModal = () => {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState('');
@@ -25,6 +22,8 @@ const LoginFormModal = () => {
     })};
 
     return (
+        <>
+        <h1>Log In</h1>
         <form onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -51,7 +50,7 @@ const LoginFormModal = () => {
             </label>
             <button type="submit" className="log-in-button">Log In</button>
         </form>
-    );
-}
+        </>
+)};
 
 export default LoginFormModal;
