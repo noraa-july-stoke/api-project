@@ -33,7 +33,6 @@ Thunk Actions
 export const thunkSpotsFetch = () => async (dispatch) => {
 
     const response = await csrfFetch('/api/spots');
-
     const data = await response.json();
     dispatch(actionSpotsFetch(data.Spots));
 };
@@ -51,7 +50,6 @@ const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case(SPOTS_FETCH):
-            console.log(action.spots)
             newState.spots = action.spots;
             return newState;
         default:
