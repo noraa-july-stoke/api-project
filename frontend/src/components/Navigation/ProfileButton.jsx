@@ -10,7 +10,7 @@ function ProfileButton({ user }) {
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
 
-    const openMenu = () => {
+    const openMenu = e => {
         if (showMenu) return;
         setShowMenu(true);
     };
@@ -35,7 +35,8 @@ function ProfileButton({ user }) {
         closeMenu();
     };
 
-    const ulClassName = "profile-dropdown"// + (showMenu ? "" : " hidden");
+    const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
 
     return (
         <>
@@ -43,7 +44,9 @@ function ProfileButton({ user }) {
                 <i className="fas fa-user-circle" />
             </button>
             <ul className={ulClassName} ref={ulRef}>
-                {user ? (
+                {
+                user
+                ? (
                     <>
                         <li>{user.username}</li>
                         <li>{user.firstName} {user.lastName}</li>
@@ -52,7 +55,8 @@ function ProfileButton({ user }) {
                             <button onClick={logout}>Log Out</button>
                         </li>
                     </>
-                ) : (
+                )
+                : (
                     <>
                         <OpenModalMenuItem
                             itemText="Log In"

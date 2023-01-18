@@ -1,0 +1,21 @@
+img{
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    object-fit:cover;
+}
+
+.spot-card-container{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    font-size: .9em ;
+    padding: .5em;
+}
+
+.spot-city-state-rating{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}

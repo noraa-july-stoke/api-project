@@ -1,0 +1,5 @@
+.spots-display{
+    width: 100em;
+    display: flex;
+    flex-direction: row-wrap;
+}
