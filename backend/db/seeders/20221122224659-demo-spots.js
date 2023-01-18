@@ -56,6 +56,30 @@ module.exports = {
         name: "Spot 3",
         description: "A cute little spot",
         price: 120
+      },
+      {
+        ownerId: 3,
+        address: "120 Shady Lane",
+        city: "Nowhereville",
+        state: "New York",
+        country: "United States of America",
+        lat: 41.0270,
+        lng: -71.9640,
+        name: "Spot 4",
+        description: "A cute little spot",
+        price: 120
+      },
+      {
+        ownerId: 3,
+        address: "119 Shady Lane",
+        city: "Nowhereville",
+        state: "New York",
+        country: "United States of America",
+        lat: 41.0270,
+        lng: -71.9640,
+        name: "Spot 5",
+        description: "A cute little spot",
+        price: 120
       }
     ], {});
   },
