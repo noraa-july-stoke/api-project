@@ -24,7 +24,7 @@ module.exports = {
     await queryInterface.bulkInsert(options, [
       {
         spotId: 1,
-        url: "source.com/image",
+        url: "https://images.pexels.com/photos/2816284/pexels-photo-2816284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         preview: true
       },
       {
@@ -34,7 +34,7 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: "source.com/image",
+        url: "https://images.pexels.com/photos/1862402/pexels-photo-1862402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         preview: true
       },
       {
@@ -44,11 +44,31 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: "source.com/image",
+        url: "https://images.pexels.com/photos/2189666/pexels-photo-2189666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         preview: true
       },
       {
         spotId: 3,
+        url: "source.com/image",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://images.pexels.com/photos/577697/pexels-photo-577697.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        preview: true
+      },
+      {
+        spotId: 4,
+        url: "source.com/image",
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: "https://images.pexels.com/photos/2282445/pexels-photo-2282445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        preview: true
+      },
+      {
+        spotId: 5,
         url: "source.com/image",
         preview: false
       }

@@ -33,7 +33,6 @@ Thunk Actions
 export const thunkSpotsFetch = () => async (dispatch) => {
 
     const response = await csrfFetch('/api/spots');
-
     const data = await response.json();
     dispatch(actionSpotsFetch(data.Spots));
 };
@@ -42,18 +41,21 @@ export const thunkSpotsFetch = () => async (dispatch) => {
 
 //Reducer For Spot Fetch Data
 
-const initialState = { spots: null }
+const initialState = { allSpots: {}, singleSpot:{} }
 
 const spotsReducer = (state = initialState, action) => {
 
-    let newState = Object.assign({}, state);
+
+    //!@#$ - Normalize
 
     switch (action.type) {
 
-        case(SPOTS_FETCH):
-            console.log(action.spots)
-            newState.spots = action.spots;
+        case(SPOTS_FETCH):{
+            const newState = { allSpots: {}, singleSpot: {} };
+            newState.allSpots = action.spots;
             return newState;
+        }
+
         default:
             return state;
     }
