@@ -3,11 +3,11 @@ import { useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import SpotCard from '../SpotCard/SpotCard';
 import './SpotsContainer.css'
+import * as utils from '../../../store/utils';
 
 const SpotsContainer = () => {
-
     const dispatch = useDispatch();
-    const spots = useSelector((store) => store.spots.allSpots);
+    const spots = utils.deNormalize(useSelector((store) => store.spots.allSpots));
 
     useEffect(() => {
         dispatch(thunkSpotsFetch());
@@ -25,13 +25,7 @@ const SpotsContainer = () => {
             }
         </div>
         </>
-
-    );
-
-
-
-
-};
+)};
 
 
 
