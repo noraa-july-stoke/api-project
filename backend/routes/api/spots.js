@@ -386,7 +386,7 @@ router.post('/', restoreUser, requireAuth, async (req, res) => {
 
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
-        if (!address || !city  || !state || !country || ! lat || !lng || !name || !description || !price) {
+        if (!address || !city  || !state || !country || !name || !description || !price) {
 
             res.status(400);
             res.json({
@@ -397,14 +397,12 @@ router.post('/', restoreUser, requireAuth, async (req, res) => {
                     "city": "City is required",
                     "state": "State is required",
                     "country": "Country is required",
-                    "lat": "Latitude is not valid",
-                    "lng": "Longitude is not valid",
                     "name": "Name must be less than 50 characters",
                     "description": "Description is required",
                     "price": "Price per day is required"
-                }
-            });
-        }
+}})};
+
+
 
     const newSpot = Spot.build({
         ownerId: req.user.id,
@@ -442,8 +440,7 @@ router.post('/:spotId/images', restoreUser, requireAuth, async (req, res) => {
         res.send({
             "message": "Spot couldn't be found",
             "statusCode": 404
-        });
-    }
+    })}
 
     const { url, preview } = req.body;
     let newImg = SpotImage.build({
@@ -476,8 +473,7 @@ router.post('/:spotId/reviews', restoreUser, requireAuth, async (req, res) => {
         return res.status(404).send({
             "message": "Spot couldn't be found",
             "statusCode": 404
-        })
-    }
+    })};
 
     if (!review || !stars ) {
         return res.status(400).send({
@@ -486,9 +482,7 @@ router.post('/:spotId/reviews', restoreUser, requireAuth, async (req, res) => {
             "errors": {
                 "review": "Review text is required",
                 "stars": "Stars must be an integer from 1 to 5",
-            }
-        });
-    }
+    }})}
 
     const newReview = Review.build({
         spotId,
@@ -502,8 +496,7 @@ router.post('/:spotId/reviews', restoreUser, requireAuth, async (req, res) => {
         return res.status(403).send({
             "message": "User already has a review for this spot",
             "statusCode": 403
-        });
-    }
+    })}
 
     await newReview.save();
 
@@ -536,15 +529,13 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
         return res.status(404).send({
             "message": "Spot couldn't be found",
             "statusCode": 404
-        })
-    }
+    })};
 
     if (userId === spot.ownerId) {
         return res.status(403).send({
             "message": "Cannot create a booking for a spot you own",
             "statusCode": 403
-        });
-    }
+        })};
 
     startTime = new Date(startDate).getTime();
     endTime = new Date(endDate).getTime();
@@ -555,9 +546,7 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
             "statusCode": 400,
             "errors": {
                 "endDate": "endDate cannot be on or before startDate"
-            }
-        });
-    }
+    }})};
 
     for (let booking of bookingsList) {
 
@@ -576,10 +565,7 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
                 "errors": {
                     "startDate": "Start date conflicts with an existing booking",
                     "endDate": "End date conflicts with an existing booking"
-                }
-            });
-       };
-    }
+    }})}};
 
     const newBooking = Booking.build({
         spotId,

@@ -8,6 +8,7 @@ import { Route, Switch } from "react-router-dom";
 // Local Module/Function Component Imports
 import Navigation from "./components/Navigation";
 import SpotsContainer from "./components/SpotDisplayComponents/SpotsContainer";
+import AddSpotForm from "./components/SpotDisplayComponents/AddSpotForm/AddSpotForm";
 
 import * as sessionActions from "./store/session.js";
 
@@ -21,15 +22,15 @@ const App = () => {
       .then(() => setIsLoaded(true));
   }, [dispatch]);
 
-
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <SpotsContainer />
+      <AddSpotForm />
+
       {isLoaded && (
         <Switch>
-          <Route path='/spots'>
-            <SpotsContainer />
-          </Route>
+
         </Switch>
       )}
     </>
