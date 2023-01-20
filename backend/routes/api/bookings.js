@@ -135,7 +135,6 @@ router.put('/:bookingId', restoreUser, requireAuth, async (req, res) => {
 
 
 
-        console.log(start, end);
     }
 
     await editBooking.save()
@@ -186,8 +185,6 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
 
     await deleteBooking.destroy();
 
-
-    console.log(userId, spot.ownerId, deleteBooking.userId)
 
     res.status(200)
     res.json({

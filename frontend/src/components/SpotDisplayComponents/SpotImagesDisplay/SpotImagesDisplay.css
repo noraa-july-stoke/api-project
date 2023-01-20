@@ -1,0 +1,43 @@
+.spot-images-display-container{
+        max-height: 50vh;
+        max-width: 60vw;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        border-radius: 15px;
+        border: 1px solid black;
+        align-items: space between;;
+}
+
+.preview-image-container{
+    max-width: 50%;
+    overflow: hidden;
+}
+
+.preview-image{
+    margin: auto;
+    width: stretch;
+}
+
+.spot-image{
+    margin: auto;
+    width: stretch;
+
+}
+
+.spot-images-container{
+        max-width: 50%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: space-between;
+
+}
+
+.spot-image-container {
+    max-width: 48%;
+    max-height: 48%;
+    overflow: hidden;
+    margin: auto;
+}

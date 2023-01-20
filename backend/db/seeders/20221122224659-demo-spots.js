@@ -38,7 +38,7 @@ module.exports = {
         address: "122 Shady Lane",
         city: "Nowhereville",
         state: "New York",
-        country: "United States of Amßerica",
+        country: "United States of America",
         lat: 41.0260,
         lng: -71.9680,
         name: "Spot 2",
