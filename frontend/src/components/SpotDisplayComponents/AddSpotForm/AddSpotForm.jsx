@@ -4,7 +4,9 @@ Add A Spot
 
 //Node Library Imports
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 //Local Module Imports
 // import * as sessionActions from "../../store/session";
@@ -27,7 +29,10 @@ const AddSpotForm = () => {
     const [price, setPrice] = useState('');
     const [imgUrl, setImgUrl] = useState('');
 
+
     const [errors, setErrors] = useState([]);
+
+    const history = useHistory();
 
     useEffect(() => {
         const formErrors = [];
@@ -38,11 +43,12 @@ const AddSpotForm = () => {
         if (!country) formErrors.push('Country is required!');
         if (!description) formErrors.push('Description is required!');
         if (!price) formErrors.push('Price is required!');
-        if (!imgUrl) formErrors.push('Please enter an image for your spot!');
+        if (!imgUrl) formErrors.push('Please enter an image url for your spot!');
         setErrors(formErrors);
+
     },[name, address, city, state, country, description, price, imgUrl]);
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
 
         if (!errors.length) {
@@ -56,14 +62,25 @@ const AddSpotForm = () => {
                 price: +price
             };
 
-            spotData.lng = null;
-            spotData.lat = null;
+            spotData.lng = 45;
+            spotData.lat = 45;
 
-            return dispatch(thunkAddSpot(spotData, imgUrl))
-                .catch( async res => {
-                    const data = await res.json()
-                    if (data && data.errors) setErrors(data.errors);
-    })}};
+
+            setName('');
+            setAddress('');
+            setCity('');
+            setState('');
+            setCountry('');
+            setDescription('');
+            setPrice('');
+            setImgUrl('');
+
+            const spotRes = await dispatch(thunkAddSpot(spotData, imgUrl));
+            console.log('SPOT RES', spotRes);
+
+            if (spotRes) {
+                history.push(`/spots/${spotRes.id}`);
+    }}};
 
     return (
 
