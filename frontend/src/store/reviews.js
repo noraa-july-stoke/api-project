@@ -29,12 +29,11 @@ export const thunkFetchSpotReviews = (spotId) => async (dispatch) => {
     dispatch(actionFetchSpotReviews(data.Reviews));
 };
 
-
-
-
+// -------------------------------------------------------
+// Reviews Reducer
+// -------------------------------------------------------
 
 const initialState = { spot: {}, user: {} }
-
 const reviewsReducer = (state = initialState, action) => {
 
 

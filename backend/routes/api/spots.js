@@ -295,12 +295,11 @@ router.get('/:spotId/reviews', async (req, res) => {
         attributes: {include: ['id']}
     });
 
-    if(!reviewList.length) {
+    if(reviewList === null) {
         return res.status(404).send({
                 "message": "Spot couldn't be found",
                 "statusCode": 404
-            })
-    }
+    })}
 
     let Reviews = [];
     for (let review of reviewList) {

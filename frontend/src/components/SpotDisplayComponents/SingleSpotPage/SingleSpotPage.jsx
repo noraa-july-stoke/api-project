@@ -20,9 +20,13 @@ const SingleSpotPage = () => {
         dispatch(thunkSingleSpotFetch(spotId));
     },[dispatch, spotId]);
 
-    const clickHandler = e => {
+    const handleManageClick = e => {
         history.push(`/spots/${spot.id}/edit`);
     };
+
+    const handleReviewClick = e => {
+        return null;
+    }
 
     if (spot) {
 
@@ -43,9 +47,18 @@ const SingleSpotPage = () => {
                     sessionUser && sessionUser.id === spot.ownerId
                         ?
                             <div>
-                                <button onClick={clickHandler}>Manage this spot</button>
+                                <button onClick={handleManageClick}>Manage this spot</button>
                             </div>
 
+                        : null
+                }
+
+                {
+                    sessionUser && sessionUser.id !== spot.ownerId
+                        ?
+                        <div>
+                            <button onClick = {handleReviewClick}>Leave A Review</button>
+                        </div>
                         : null
                 }
 

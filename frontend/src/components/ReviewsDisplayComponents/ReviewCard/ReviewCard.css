@@ -1,8 +1,23 @@
 
 
-.spot-city-state-rating {
+.review-card-container{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-date-pic-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+}
+
+.name-year-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-pic{
+    height: 50px;
+    width:50px;
+    border-radius: 100%;
 }

@@ -16,7 +16,7 @@ const SpotReviewsDisplay = () => {
 
     useEffect(() => {
         dispatch(thunkFetchSpotReviews(spotId));
-    }, [dispatch]);
+    }, [dispatch, spotId]);
 
 
     if (reviews.length) {
