@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
+import * as sessionActions from '../../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { useModal } from "../../context/Modal";
+import { useModal } from "../../../context/Modal";
 import './LoginForm.css';
 
 const LoginFormModal = () => {
@@ -20,6 +20,12 @@ const LoginFormModal = () => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
     })};
+
+    const handleDemoClick = e => {
+        e.preventDefault();
+        setCredential('user1');
+        setPassword('password')
+    }
 
     return (
         <>
@@ -48,6 +54,7 @@ const LoginFormModal = () => {
                     className="login-credential-field"
                 />
             </label>
+            <button type='fill-demo-user' onClick={handleDemoClick}>Demo User</button>
             <button type="submit" className="log-in-button">Log In</button>
         </form>
         </>

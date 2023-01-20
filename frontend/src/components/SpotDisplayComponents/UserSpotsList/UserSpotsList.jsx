@@ -33,10 +33,10 @@ const UserSpotsList = () => {
                             <div className='user-spot-card-display'>
                                 {userSpots.map((spot) =>
                                     <SpotCard spot={spot} key={spot.id} />
-                                 )};
+                                 )}
                             </div>
                         </div>
-                        : null
+                        : <><h1>You Don't Have Any Spots!!!</h1></>
                 }
             </div>
         </>

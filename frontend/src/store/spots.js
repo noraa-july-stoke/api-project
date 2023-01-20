@@ -16,7 +16,7 @@ Action Type Constants
 const SPOTS_FETCH = 'SPOTS_FETCH';
 const ADD_SPOT = 'ADD_SPOT';
 const GET_SPOT = 'GET_SPOT';
-const EDIT_SPOT = 'EDIT_SPOT';
+
 /* ----------------------------------------------------------
 Action creators
 ------------------------------------------------------------*/
@@ -42,11 +42,6 @@ const actionGetSpot = (spot) => {
         spot
 }};
 
-const actionEditSpot = (spot) =>{
-    return {
-        type: GET_SPOT,
-        spot
-}};
 
 
 
@@ -110,8 +105,21 @@ export const thunkEditSpot = (spot) => async (dispatch) => {
     })});
     if (editSpotRes.ok) {
         const spotData = await editSpotRes.json();
+        dispatch(actionSpotsFetch);
         return spotData;
 }};
+
+
+export const thunkDeleteSpot = (spotId) => async (dispatch) => {
+    const deleteSpotRes = await csrfFetch(`/api/spots/${spotId}`, {
+        method: 'DELETE'
+    });
+    if (deleteSpotRes.ok) {
+        const deleteData = await deleteSpotRes.json();
+        return deleteData;
+}};
+
+
 
 
 //Reducer For Spot Fetch Data

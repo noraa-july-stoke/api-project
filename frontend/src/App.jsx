@@ -14,6 +14,7 @@ import AddSpotForm from "./components/Forms/AddSpotForm/AddSpotForm";
 import SingleSpotPage from "./components/SpotDisplayComponents/SingleSpotPage";
 import UserSpotsList from "./components/SpotDisplayComponents/UserSpotsList";
 import EditSpotForm from "./components/Forms/EditSpotForm/EditSpotForm";
+import SpotReviewsDisplay from "./components/ReviewsDisplayComponents/SpotReviewsDisplay";
 
 import * as sessionActions from "./store/session.js";
 
@@ -38,6 +39,7 @@ const App = () => {
       </Route>
       <Route path='/spots/:spotId'>
         <SingleSpotPage />
+        {/* <SpotReviewsDisplay/> */}
       </Route>
       </Switch>
 

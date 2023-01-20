@@ -1,0 +1,8 @@
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    font-size: .9em;
+    padding: .5em;
+    min-width: 250px;
+}

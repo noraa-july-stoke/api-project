@@ -4,7 +4,6 @@ const SpotImagesDisplay = ({images}) => {
     let previewImage;
     if (images){
         previewImage = images.find(img => img.preview);
-        // console.log(previewImage)
     };
 
     return(

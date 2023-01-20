@@ -9,14 +9,12 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-
 //Local Module Imports
 // import * as sessionActions from "../../store/session";
 // import { thunkAddSpot } from '../../../store/spots';
-import { thunkSingleSpotFetch, thunkEditSpot } from '../../../store/spots';
+import { thunkSingleSpotFetch, thunkEditSpot, thunkDeleteSpot } from '../../../store/spots';
 
 //Style Imports
-
 
 //React funcitonal Component that displays controlled inputs for user signup
 const EditSpotForm = () => {
@@ -79,8 +77,12 @@ const EditSpotForm = () => {
             if (spotRes) {
                 // const spot = await spotRes.json();
                 history.push(`/spots/${spotId}`);
-            }
-        }
+    }}};
+
+    const handleDeleteClick = (e) => {
+        e.preventDefault();
+        const deleteRes = dispatch(thunkDeleteSpot(spotId));
+        history.push('/your-spots');
     };
 
     return (
@@ -171,12 +173,10 @@ const EditSpotForm = () => {
                 </label>
 
                 <button type='submit' className='edit-spot-button'>Confirm Changes</button>
-                <button type='delete'>Delete This Spot</button>
+                <button type='delete' onClick ={handleDeleteClick}>Delete This Spot</button>
 
             </form>
         </>
-    )
-};
-
+)};
 
 export default EditSpotForm;

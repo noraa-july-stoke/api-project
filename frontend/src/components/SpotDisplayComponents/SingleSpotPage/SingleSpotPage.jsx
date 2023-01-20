@@ -4,8 +4,8 @@ import { useHistory } from 'react-router';
 import { useEffect } from 'react';
 
 import { thunkSingleSpotFetch } from '../../../store/spots';
-
 import SpotImagesDisplay from '../SpotImagesDisplay/SpotImagesDisplay';
+import SpotReviewsDisplay from '../../ReviewsDisplayComponents/SpotReviewsDisplay';
 
 
 const SingleSpotPage = () => {
@@ -27,6 +27,7 @@ const SingleSpotPage = () => {
     if (spot) {
 
         return (
+            <>
             <div className='single-spot-page-container'>
                 <h1>{spot.name}</h1>
                 <div className='spot-details-container'>
@@ -35,6 +36,7 @@ const SingleSpotPage = () => {
                     <span className='single-spot-info'>{'AwesomeHost'}</span>
                     <span className='single-spot-info'>{spot.city}, {spot.state}, {spot.country}</span>
                     <SpotImagesDisplay images={spot.SpotImages} />
+
                 </div>
 
                 {
@@ -47,7 +49,10 @@ const SingleSpotPage = () => {
                         : null
                 }
 
+
             </div>
+                <SpotReviewsDisplay />
+            </>
 
     )} else return null;
 

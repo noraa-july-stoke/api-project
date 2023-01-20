@@ -12,7 +12,6 @@ import { csrfFetch } from './csrf';
 Action Type Constants
 ------------------------------------------------------------*/
 
-
 const LOGIN = 'session/actionLogin';
 const LOGOUT = 'session/actionLogout';
 const SIGNUP = 'SIGNUP';
@@ -108,8 +107,8 @@ export const thunkLogout = () => async (dispatch) => {
     dispatch(actionLogout())
     return response;
 };
-//------------------------------------------------------------------------------
 
+//------------------------------------------------------------------------------
 
 //Reducer For Session Activities. (login, logout, check current user/login status)
 const initialState = { user: null };
