@@ -16,7 +16,7 @@ import { thunkAddSpot } from '../../../store/spots';
 
 
 //React funcitonal Component that displays controlled inputs for user signup
-const AddSpotForm = () => {
+const EditSpotForm = () => {
 
     const dispatch = useDispatch();
 
@@ -46,7 +46,7 @@ const AddSpotForm = () => {
         if (!imgUrl) formErrors.push('Please enter an image url for your spot!');
         setErrors(formErrors);
 
-    },[name, address, city, state, country, description, price, imgUrl]);
+    }, [name, address, city, state, country, description, price, imgUrl]);
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -76,11 +76,12 @@ const AddSpotForm = () => {
             setImgUrl('');
 
             const spotRes = await dispatch(thunkAddSpot(spotData, imgUrl));
-            console.log('SPOT RES', spotRes);
 
             if (spotRes) {
                 history.push(`/spots/${spotRes.id}`);
-    }}};
+            }
+        }
+    };
 
     return (
 
@@ -88,7 +89,7 @@ const AddSpotForm = () => {
             <h1>Add Your Spot</h1>
             <form onSubmit={handleSubmit}>
                 <ul>
-                    {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>): null}
+                    {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null}
                 </ul>
 
                 <label>
@@ -168,17 +169,6 @@ const AddSpotForm = () => {
                     />
                 </label>
 
-                <label>
-                    {'Add an initial image '}
-                    <input
-                        type='text'
-                        value={imgUrl}
-                        onChange={e => setImgUrl(e.target.value)}
-                        required
-                        className='add-spot-form-data'
-                    />
-                </label>
-
                 <button type='submit' className='add-spot-button'>Add Spot</button>
 
             </form>
@@ -187,4 +177,4 @@ const AddSpotForm = () => {
 };
 
 
-export default AddSpotForm;
+export default EditSpotForm;

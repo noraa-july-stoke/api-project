@@ -16,6 +16,7 @@ Action Type Constants
 const SPOTS_FETCH = 'SPOTS_FETCH';
 const ADD_SPOT = 'ADD_SPOT';
 const GET_SPOT = 'GET_SPOT';
+// const USER_SPOTS = 'USER_SPOTS';
 
 /* ----------------------------------------------------------
 Action creators
@@ -40,6 +41,7 @@ const actionGetSpot = (spot) => {
         type: GET_SPOT,
         spot
 }};
+
 
 
 

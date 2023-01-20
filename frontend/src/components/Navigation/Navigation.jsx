@@ -18,7 +18,8 @@ function Navigation({ isLoaded }) {
             {isLoaded && sessionUser && (
                 <>
                     <li>
-                        <NavLink to={`/spots/${sessionUser.id}/add-spot`}>Add Your Spot!</NavLink>
+                        <NavLink to='/add-spot'>Add Your Spot!</NavLink>
+                        <NavLink to='/your-spots'>View Your Spots</NavLink>
                     </li>
                 </>
             )}

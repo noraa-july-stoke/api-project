@@ -1,0 +1,15 @@
+.user-spots{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.user-spot-card-display {
+    width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        border: 1px solid black;
+        margin: auto;
+}

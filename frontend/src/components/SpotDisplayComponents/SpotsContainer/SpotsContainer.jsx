@@ -27,8 +27,4 @@ const SpotsContainer = () => {
         </>
 )};
 
-
-
-
-
 export default SpotsContainer;

@@ -5,12 +5,14 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import {useSelector} from 'react-redux';
+import { useHistory } from "react-router-dom";
 
 // Local Module/Function Component Imports
 import Navigation from "./components/Navigation";
 import SpotsContainer from "./components/SpotDisplayComponents/SpotsContainer";
-import AddSpotForm from "./components/SpotDisplayComponents/AddSpotForm/AddSpotForm";
+import AddSpotForm from "./components/Forms/AddSpotForm/AddSpotForm";
 import SingleSpotPage from "./components/SpotDisplayComponents/SingleSpotPage";
+import UserSpotsList from "./components/SpotDisplayComponents/UserSpotsList";
 
 import * as sessionActions from "./store/session.js";
 
@@ -26,18 +28,22 @@ const App = () => {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <Switch history >
       <Route exact path='/'>
         <SpotsContainer />
       </Route>
       <Route path='/spots/:spotId'>
         <SingleSpotPage />
       </Route>
+      </Switch>
 
       {isLoaded && (
         <Switch>
-
-          <Route path='/spots/:userId/add-spot'>
+          <Route path='/add-spot'>
             <AddSpotForm />
+          </Route>
+          <Route path='/your-spots'>
+            <UserSpotsList />
           </Route>
 
         </Switch>

@@ -115,7 +115,7 @@ router.get('/', restoreUser, async (req, res) => {
 
     let spotList = await Spot.findAll({
         include: [{model: Review}],
-        ...pagination,
+        // ...pagination,
         where
     });
     let spots = [];

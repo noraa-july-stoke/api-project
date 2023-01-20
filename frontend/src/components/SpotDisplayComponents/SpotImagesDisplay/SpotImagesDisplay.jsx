@@ -4,7 +4,7 @@ const SpotImagesDisplay = ({images}) => {
     let previewImage;
     if (images){
         previewImage = images.find(img => img.preview);
-        console.log(previewImage)
+        // console.log(previewImage)
     };
 
     return(
@@ -16,16 +16,16 @@ const SpotImagesDisplay = ({images}) => {
             </div>
             <div className="spot-images-container">
                     <div className="spot-image-container">
-                        <img classname='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
+                        <img className='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
                     </div>
                     <div className="spot-image-container">
-                        <img classname='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
+                        <img className='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
                     </div>
                     <div className="spot-image-container">
-                        <img classname='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
+                        <img className='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
                     </div>
                     <div className="spot-image-container">
-                        <img classname='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
+                        <img className='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
                     </div>
 
             </div>
