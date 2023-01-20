@@ -7,10 +7,13 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
 
 //Local Module Imports
 // import * as sessionActions from "../../store/session";
-import { thunkAddSpot } from '../../../store/spots';
+// import { thunkAddSpot } from '../../../store/spots';
+import { thunkSingleSpotFetch, thunkEditSpot } from '../../../store/spots';
 
 //Style Imports
 
@@ -19,20 +22,26 @@ import { thunkAddSpot } from '../../../store/spots';
 const EditSpotForm = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
+    const {spotId} = useParams();
 
-    const [name, setName] = useState('');
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [country, setCountry] = useState('');
-    const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
-    const [imgUrl, setImgUrl] = useState('');
+    const spot = useSelector(store => store.spots.singleSpot);
+
+    const [name, setName] = useState(spot.name);
+    const [address, setAddress] = useState(spot.address);
+    const [city, setCity] = useState(spot.city);
+    const [state, setState] = useState(spot.state);
+    const [country, setCountry] = useState(spot.country);
+    const [description, setDescription] = useState(spot.description);
+    const [price, setPrice] = useState(spot.price);
 
 
     const [errors, setErrors] = useState([]);
 
-    const history = useHistory();
+    useEffect(() => {
+        dispatch(thunkSingleSpotFetch(spotId));
+
+    }, [dispatch, spotId]);
 
     useEffect(() => {
         const formErrors = [];
@@ -43,12 +52,11 @@ const EditSpotForm = () => {
         if (!country) formErrors.push('Country is required!');
         if (!description) formErrors.push('Description is required!');
         if (!price) formErrors.push('Price is required!');
-        if (!imgUrl) formErrors.push('Please enter an image url for your spot!');
         setErrors(formErrors);
 
-    }, [name, address, city, state, country, description, price, imgUrl]);
+    }, [name, address, city, state, country, description, price]);
 
-    const handleSubmit = async e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!errors.length) {
@@ -59,26 +67,18 @@ const EditSpotForm = () => {
                 state,
                 country,
                 description,
-                price: +price
+                price: +price,
+                id: spotId
             };
 
             spotData.lng = 45;
             spotData.lat = 45;
 
-
-            setName('');
-            setAddress('');
-            setCity('');
-            setState('');
-            setCountry('');
-            setDescription('');
-            setPrice('');
-            setImgUrl('');
-
-            const spotRes = await dispatch(thunkAddSpot(spotData, imgUrl));
+            const spotRes = await dispatch(thunkEditSpot(spotData))
 
             if (spotRes) {
-                history.push(`/spots/${spotRes.id}`);
+                // const spot = await spotRes.json();
+                history.push(`/spots/${spotId}`);
             }
         }
     };
@@ -86,7 +86,7 @@ const EditSpotForm = () => {
     return (
 
         <>
-            <h1>Add Your Spot</h1>
+            <h1>Modify A Field To Edit.</h1>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null}
@@ -101,6 +101,7 @@ const EditSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
+
                 </label>
 
                 <label>
@@ -169,7 +170,8 @@ const EditSpotForm = () => {
                     />
                 </label>
 
-                <button type='submit' className='add-spot-button'>Add Spot</button>
+                <button type='submit' className='edit-spot-button'>Confirm Changes</button>
+                <button type='delete'>Delete This Spot</button>
 
             </form>
         </>

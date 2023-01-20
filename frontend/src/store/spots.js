@@ -16,8 +16,7 @@ Action Type Constants
 const SPOTS_FETCH = 'SPOTS_FETCH';
 const ADD_SPOT = 'ADD_SPOT';
 const GET_SPOT = 'GET_SPOT';
-// const USER_SPOTS = 'USER_SPOTS';
-
+const EDIT_SPOT = 'EDIT_SPOT';
 /* ----------------------------------------------------------
 Action creators
 ------------------------------------------------------------*/
@@ -36,12 +35,18 @@ const actionAddSpot = (spot) => {
         spot
 }};
 
+//Gets details for single spot
 const actionGetSpot = (spot) => {
     return {
         type: GET_SPOT,
         spot
 }};
 
+const actionEditSpot = (spot) =>{
+    return {
+        type: GET_SPOT,
+        spot
+}};
 
 
 
@@ -87,6 +92,25 @@ export const thunkSingleSpotFetch = (spotId) => async (dispatch) => {
         const spot = await singleSpotRes.json();
         dispatch(actionGetSpot(spot))
         return spot;
+}};
+
+export const thunkEditSpot = (spot) => async (dispatch) => {
+    const editSpotRes = await csrfFetch(`/api/spots/${spot.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            address: spot.address,
+            city: spot.city,
+            state: spot.state,
+            country: spot.country,
+            lat: spot.lat,
+            lng: spot.lng,
+            name: spot.name,
+            description: spot.description,
+            price: spot.price
+    })});
+    if (editSpotRes.ok) {
+        const spotData = await editSpotRes.json();
+        return spotData;
 }};
 
 

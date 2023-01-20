@@ -13,6 +13,7 @@ import SpotsContainer from "./components/SpotDisplayComponents/SpotsContainer";
 import AddSpotForm from "./components/Forms/AddSpotForm/AddSpotForm";
 import SingleSpotPage from "./components/SpotDisplayComponents/SingleSpotPage";
 import UserSpotsList from "./components/SpotDisplayComponents/UserSpotsList";
+import EditSpotForm from "./components/Forms/EditSpotForm/EditSpotForm";
 
 import * as sessionActions from "./store/session.js";
 
@@ -32,6 +33,9 @@ const App = () => {
       <Route exact path='/'>
         <SpotsContainer />
       </Route>
+      <Route path={'/spots/:spotId/edit'}>
+        <EditSpotForm/>
+      </Route>
       <Route path='/spots/:spotId'>
         <SingleSpotPage />
       </Route>
@@ -45,7 +49,6 @@ const App = () => {
           <Route path='/your-spots'>
             <UserSpotsList />
           </Route>
-
         </Switch>
       )}
     </>

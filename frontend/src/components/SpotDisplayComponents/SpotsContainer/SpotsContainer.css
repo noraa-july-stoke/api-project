@@ -5,4 +5,5 @@
     flex-direction: row;
     border: 1px solid black;
     margin: auto;
+    justify-content: center;
 }
