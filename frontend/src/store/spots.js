@@ -56,6 +56,7 @@ export const thunkSpotsFetch = () => async (dispatch) => {
     const data = await response.json()
 
     dispatch(actionSpotsFetch(data.Spots));
+    return data;
 };
 
 
@@ -145,7 +146,6 @@ const spotsReducer = (state = initialState, action) => {
         {
             const newState = { ...state};
             newState.allSpots = { ...newState.allSpots, [action.spot.id]:action.spot}
-
             return newState;
         }
 
