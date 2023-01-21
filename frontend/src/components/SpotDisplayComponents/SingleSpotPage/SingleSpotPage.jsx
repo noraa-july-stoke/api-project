@@ -16,6 +16,7 @@ const SingleSpotPage = () => {
     const spot = useSelector(store => store.spots.singleSpot);
     const sessionUser = useSelector(store=> store.session.user);
 
+
     useEffect(() => {
         dispatch(thunkSingleSpotFetch(spotId));
     },[dispatch, spotId]);

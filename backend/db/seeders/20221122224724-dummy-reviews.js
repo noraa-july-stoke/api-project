@@ -28,7 +28,7 @@ module.exports = {
         spotId: 2,
         userId: 2,
         review: "This place has roaches!!! Watch out!!!",
-        stars: 0
+        stars: 1
       },
       {
         spotId: 2,
@@ -40,7 +40,7 @@ module.exports = {
         spotId: 3,
         userId: 1,
         review: "Traaaashhhhhh",
-        stars: 0
+        stars: 1
       }
 
     ]);
