@@ -25,34 +25,31 @@ const App = () => {
   useEffect(() => {
     dispatch(sessionActions.thunkRestoreUser())
       .then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, isLoaded]);
 
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <Switch>
-      <Route exact path='/'>
-        <SpotsContainer />
-      </Route>
-      <Route path={'/spots/:spotId/edit'}>
-        <EditSpotForm/>
-      </Route>
-      <Route path='/spots/:spotId'>
-        <SingleSpotPage />
-      </Route>
-      <Route path='/create-review'>
-          <ReviewForm />
-      </Route>
-        <Route path='/add-spot'>
-          <AddSpotForm />
-        </Route>
-        <Route path='/your-spots'>
-          <UserSpotsList />
-        </Route>
-      </Switch>
-
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <SpotsContainer />
+          </Route>
+          <Route path={'/spots/:spotId/edit'}>
+            <EditSpotForm />
+          </Route>
+          <Route path='/spots/:spotId'>
+            <SingleSpotPage />
+          </Route>
+          <Route path='/create-review'>
+            <ReviewForm />
+          </Route>
+          <Route path='/add-spot'>
+            <AddSpotForm />
+          </Route>
+          <Route path='/your-spots'>
+            <UserSpotsList />
+          </Route>
         </Switch>
       )}
     </>
