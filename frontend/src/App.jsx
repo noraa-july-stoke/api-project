@@ -41,8 +41,11 @@ const App = () => {
         <SingleSpotPage />
         {/* <SpotReviewsDisplay/> */}
       </Route>
+      <Route path='/create-review'>
+          <ReviewForm />
+      </Route>
       </Switch>
-      <ReviewForm />
+      {/* <ReviewForm /> */}
 
 
       {isLoaded && (
