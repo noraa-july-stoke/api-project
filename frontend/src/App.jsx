@@ -39,24 +39,21 @@ const App = () => {
       </Route>
       <Route path='/spots/:spotId'>
         <SingleSpotPage />
-        {/* <SpotReviewsDisplay/> */}
       </Route>
       <Route path='/create-review'>
           <ReviewForm />
       </Route>
+        <Route path='/add-spot'>
+          <AddSpotForm />
+        </Route>
+        <Route path='/your-spots'>
+          <UserSpotsList />
+        </Route>
       </Switch>
-      {/* <ReviewForm /> */}
 
 
       {isLoaded && (
         <Switch>
-
-          <Route path='/add-spot'>
-            <AddSpotForm />
-          </Route>
-          <Route path='/your-spots'>
-            <UserSpotsList />
-          </Route>
         </Switch>
       )}
     </>
