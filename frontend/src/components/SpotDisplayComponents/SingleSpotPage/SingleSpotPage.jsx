@@ -25,7 +25,7 @@ const SingleSpotPage = () => {
     };
 
     const handleReviewClick = e => {
-        return null;
+       history.push('/create-review');
     }
 
     if (spot) {

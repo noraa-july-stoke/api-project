@@ -52,6 +52,7 @@ const ReviewForm = () => {
 
         await dispatch(thunkAddReview(review, spot.id));
         await dispatch(thunkFetchSpotReviews(spot.id));
+        history.push(`/spots/${spot.id}`)
     }};
 
     return (
