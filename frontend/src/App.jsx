@@ -14,7 +14,7 @@ import AddSpotForm from "./components/Forms/AddSpotForm/AddSpotForm";
 import SingleSpotPage from "./components/SpotDisplayComponents/SingleSpotPage";
 import UserSpotsList from "./components/SpotDisplayComponents/UserSpotsList";
 import EditSpotForm from "./components/Forms/EditSpotForm/EditSpotForm";
-import SpotReviewsDisplay from "./components/ReviewsDisplayComponents/SpotReviewsDisplay";
+import ReviewForm from "./components/Forms/ReviewForm/ReviewForm";
 
 import * as sessionActions from "./store/session.js";
 
@@ -42,6 +42,8 @@ const App = () => {
         {/* <SpotReviewsDisplay/> */}
       </Route>
       </Switch>
+      <ReviewForm />
+
 
       {isLoaded && (
         <Switch>

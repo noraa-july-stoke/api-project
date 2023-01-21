@@ -62,7 +62,6 @@ const SingleSpotPage = () => {
                         : null
                 }
 
-
             </div>
                 <SpotReviewsDisplay />
             </>

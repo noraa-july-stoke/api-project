@@ -15,7 +15,9 @@ const SpotReviewsDisplay = () => {
     const reviews = utils.deNormalize(reviewsObj);
 
     useEffect(() => {
+
         dispatch(thunkFetchSpotReviews(spotId));
+
     }, [dispatch, spotId]);
 
 

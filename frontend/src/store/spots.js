@@ -111,12 +111,12 @@ export const thunkEditSpot = (spot) => async (dispatch) => {
 
 
 export const thunkDeleteSpot = (spotId) => async (dispatch) => {
-    const deleteSpotRes = await csrfFetch(`/api/spots/${spotId}`, {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
         method: 'DELETE'
     });
-    if (deleteSpotRes.ok) {
-        const deleteData = await deleteSpotRes.json();
-        return deleteData;
+    if (response.ok) {
+        const data = await response.json();
+        return data;
 }};
 
 
@@ -135,7 +135,7 @@ const spotsReducer = (state = initialState, action) => {
         case(SPOTS_FETCH):
 
         {
-            const newState = { ...state};
+            const newState = initialState;
             newState.allSpots = utils.normalize(action.spots);
             return newState;
         }

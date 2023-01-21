@@ -290,16 +290,21 @@ router.get('/:spotId', async (req, res) => {
 
 router.get('/:spotId/reviews', async (req, res) => {
 
+    const spot = await Spot.findOne({
+        where: { id: req.params.spotId }
+
+    });
+
+    if (!spot) {
+        return res.status(404).send({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+    })};
+
     const reviewList = await Review.findAll({
         where: {spotId:req.params.spotId},
         attributes: {include: ['id']}
     });
-
-    if(reviewList === null) {
-        return res.status(404).send({
-                "message": "Spot couldn't be found",
-                "statusCode": 404
-    })}
 
     let Reviews = [];
     for (let review of reviewList) {
