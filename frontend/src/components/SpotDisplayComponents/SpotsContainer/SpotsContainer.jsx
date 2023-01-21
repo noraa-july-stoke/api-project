@@ -6,6 +6,7 @@ import './SpotsContainer.css'
 import * as utils from '../../../store/utils';
 
 const SpotsContainer = () => {
+
     const dispatch = useDispatch();
     const spots = utils.deNormalize(useSelector((store) => store.spots.allSpots));
 
@@ -25,6 +26,13 @@ const SpotsContainer = () => {
             }
         </div>
         </>
-)};
+
+    );
+
+};
+
+
+
+
 
 export default SpotsContainer;

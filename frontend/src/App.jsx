@@ -31,7 +31,7 @@ const App = () => {
     <>
       <Navigation isLoaded={isLoaded} />
       <Switch>
-      {/* <Route exact path='/'>
+      <Route exact path='/'>
         <SpotsContainer />
       </Route>
       <Route path={'/spots/:spotId/edit'}>
@@ -39,29 +39,18 @@ const App = () => {
       </Route>
       <Route path='/spots/:spotId'>
         <SingleSpotPage />
-        <SpotReviewsDisplay/>
+        {/* <SpotReviewsDisplay/> */}
       </Route>
       <Route path='/create-review'>
           <ReviewForm />
-      </Route> */}
+      </Route>
       </Switch>
+      {/* <ReviewForm /> */}
 
 
       {isLoaded && (
         <Switch>
-          <Route exact path='/'>
-            <SpotsContainer />
-          </Route>
-          <Route path={'/spots/:spotId/edit'}>
-            <EditSpotForm />
-          </Route>
-          <Route path='/spots/:spotId'>
-            <SingleSpotPage />
-            {/* <SpotReviewsDisplay/> */}
-          </Route>
-          <Route path='/create-review'>
-            <ReviewForm />
-          </Route>
+
           <Route path='/add-spot'>
             <AddSpotForm />
           </Route>
