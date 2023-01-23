@@ -67,4 +67,14 @@
     height: 40px;
     align-items: center;
     border-radius: 20px;
+    box-shadow: none;
+    transition: box-shadow 0.2s ease;
+}
+
+.profile-menu-icons-button:hover {
+    box-shadow: 3px 3px 3px rgba(118, 118, 118, 0.3);
+}
+
+ul.profile-dropdown{
+    list-style: none;
 }
