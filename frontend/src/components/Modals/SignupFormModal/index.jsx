@@ -3,7 +3,7 @@ Sign Up Form Component
 -------------------------------------------------------- */
 
 //Node Library Imports
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 
 //Local Module Imports
@@ -27,6 +27,13 @@ const SignupFormModal = () => {
     const [errors, setErrors] = useState([]);
     const {closeModal} = useModal();
 
+    useEffect(() => {
+        const newErrors = [];
+        if (!username || !firstName || !lastName || !email || ! password || ! confirmPassword) newErrors.push("All fields in this form are required!");
+        if (password !== confirmPassword) newErrors.push('Passwords must match!');
+        setErrors(newErrors);
+    }, [username, firstName, lastName, email, password, confirmPassword])
+
     const handleSubmit = e => {
         e.preventDefault();
         if (password === confirmPassword ) {
@@ -42,9 +49,9 @@ const SignupFormModal = () => {
 
     return (
         <>
+        <h2 className='sign-up'>Sign Up</h2>
         <form onSubmit={handleSubmit} className='general-form signup-form'>
-                <h1>Sign Up</h1>
-            <ul>
+            <ul className='errors'>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
 
@@ -116,7 +123,7 @@ const SignupFormModal = () => {
                 </div>
 
 
-            <button type="submit" className="log-in-button manage-button">Sign Up</button>
+            <button type="submit" className="log-in-button manage-button" disabled ={errors.length > 0}>Sign Up</button>
 
         </form>
         </>

@@ -29,13 +29,14 @@ const LoginFormModal = () => {
 
     return (
         <>
-        <h1>Log In</h1>
-        <form onSubmit={handleSubmit}>
-            <ul>
+        <h2>Log In</h2>
+        <form className='general-form' onSubmit={handleSubmit}>
+            <ul className='errors'>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <label>
-                Username or Email
+
+
+            <label>Username or Email </label>
                 <input
                     type="text"
                     value={credential}
@@ -43,9 +44,8 @@ const LoginFormModal = () => {
                     required
                     className="login-credential-field"
                 />
-            </label>
-            <label>
-                Password
+                <label> Password </label>
+
                 <input
                     type="password"
                     value={password}
@@ -53,9 +53,8 @@ const LoginFormModal = () => {
                     required
                     className="login-credential-field"
                 />
-            </label>
             <button type='fill-demo-user' onClick={handleDemoClick}>Demo User</button>
-            <button type="submit" className="log-in-button">Log In</button>
+            <button type="submit" className="log-in-button manage-button">Log In</button>
         </form>
         </>
 

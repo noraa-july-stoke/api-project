@@ -28,7 +28,6 @@ const ReviewForm = () => {
 
     const [comment, setComment] = useState('');
     const [stars, setStars] = useState(1);
-
     const [errors, setErrors] = useState([]);
 
     const history = useHistory();
