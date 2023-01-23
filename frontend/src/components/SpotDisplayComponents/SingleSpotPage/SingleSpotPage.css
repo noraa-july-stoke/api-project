@@ -1,0 +1,38 @@
+.single-spot-page-container{
+    width: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.spot-name{
+    font-weight: 800;
+    margin: 10px;
+}
+
+
+.spot-details-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12px;
+    gap: 10px;
+    margin: 10px;
+}
+
+
+/* .spots-display {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: 80px;
+    margin-right: 80px;
+    justify-content: space-between;
+    align-content: space-between;
+    border: 1px solid black;
+    gap: 10px;
+}  */

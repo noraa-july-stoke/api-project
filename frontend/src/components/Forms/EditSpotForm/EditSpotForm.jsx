@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import './EditSpotForm.css';
 
 //Local Module Imports
 // import * as sessionActions from "../../store/session";
@@ -88,14 +89,14 @@ const EditSpotForm = () => {
     return (
 
         <>
-            <h1>Modify A Field To Edit.</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
+            <h1>Modify A Field To Edit </h1>
+            <form onSubmit={handleSubmit} className='general-form'>
+                <ul className='errors'>
                     {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null}
                 </ul>
 
-                <label>
-                    {'Name '}
+                <div className="form-field-container">
+                    <label className='form-label'> Name</label>
                     <input
                         type='text'
                         value={name}
@@ -103,11 +104,10 @@ const EditSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
+                </div>
 
-                </label>
-
-                <label>
-                    {'Street Address '}
+                <div className="form-field-container">
+                    <label className='form-label'> Street Address </label>
                     <input
                         type='text'
                         value={address}
@@ -115,10 +115,10 @@ const EditSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                </div>
 
-                <label>
-                    {'Price '}
+                <div className="form-field-container">
+                    <label className='form-label'> Price </label>
                     <input
                         type='text'
                         value={price}
@@ -126,10 +126,14 @@ const EditSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                </div>
 
-                <label>
-                    {'City '}
+                <div className="form-field-container">
+
+                    <label className='form-label'> City </label>
+
+
+
                     <input
                         type='text'
                         value={city}
@@ -137,10 +141,10 @@ const EditSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                </div>
 
-                <label>
-                    {'State '}
+                <div className="form-field-container">
+                    <label className='form-label'> State </label>
                     <input
                         type='text'
                         value={state}
@@ -148,10 +152,10 @@ const EditSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                </div>
 
-                <label>
-                    {'Country '}
+                <div className="form-field-container">
+                    <label className='form-label'> Country  </label>
                     <input
                         type='text'
                         value={country}
@@ -159,21 +163,22 @@ const EditSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                </div>
 
-                <label>
-                    {'Description '}
-                    <input
+                <div className="form-field-container">
+                    <label className='form-label'>Description</label>
+
+                    <textarea
                         type='text'
                         value={description}
                         onChange={e => setDescription(e.target.value)}
                         required
-                        className='add-spot-form-data'
+                        className='add-spot-form-data description-input'
                     />
-                </label>
+                </div>
 
-                <button type='submit' className='edit-spot-button'>Confirm Changes</button>
-                <button type='delete' onClick ={handleDeleteClick}>Delete This Spot</button>
+                <button type='submit' className='edit-spot-button manage-button'>Confirm Changes</button>
+                <button type='delete' className='manage-button' onClick ={handleDeleteClick}>Delete This Spot</button>
 
             </form>
         </>

@@ -1,12 +1,11 @@
 .spot-images-display-container{
-        max-height: 50vh;
+        max-height: 40vh;
         max-width: 60vw;
         display: flex;
         flex-direction: row;
         overflow: hidden;
         border-radius: 15px;
-        border: 1px solid black;
-        align-items: space between;;
+        /* border: 1px solid black; */
 }
 
 .preview-image-container{
@@ -16,7 +15,7 @@
 
 .preview-image{
     margin: auto;
-    width: stretch;
+    /* width: stretch; */
 }
 
 .spot-image{
@@ -40,4 +39,18 @@
     max-height: 48%;
     overflow: hidden;
     margin: auto;
+}
+
+
+.spots-display {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: 80px;
+    margin-right: 80px;
+    justify-content: space-between;
+    align-content: space-between;
+    /* border: 1px solid black; */
+    gap: 10px;
 }

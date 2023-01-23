@@ -41,12 +41,12 @@ const App = () => {
           <Route exact path='/spots'>
             <SpotsContainer />
           </Route>
+          <Route path={'/spots/:spotId/edit'}>
+            <EditSpotForm />
+          </Route>
           <Route path='/spots/:spotId'>
             <SingleSpotPage />
-            <Route path={'/spots/:spotId/edit'}>
-              <EditSpotForm />
             </Route>
-          </Route>
           <Route path='/create-review/'>
             <ReviewForm />
           </Route>

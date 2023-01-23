@@ -16,9 +16,17 @@
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
+
 }
 
 #modal-content {
-    position: absolute;
+    position: relative;
+    z-index: 1;
     background-color: white;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 50px;
+
 }

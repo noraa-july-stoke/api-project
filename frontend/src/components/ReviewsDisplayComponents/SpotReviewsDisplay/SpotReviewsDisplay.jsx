@@ -39,9 +39,10 @@ const SpotReviewsDisplay = () => {
         userReview = reviews.find((review) => review.userId === sessionUser.id);
         if (sessionUser.id !== spot.ownerId ) {
             reviewButton =
-            <div className="yo">
+            <div>
                 <button
                     onClick={handleReviewClick}
+                    className='manage-button'
                     disabled={userReview !== undefined}
                 >
                     {reviewButtonText}
@@ -57,7 +58,20 @@ const SpotReviewsDisplay = () => {
 
     return (
         <div className="reviews-display">
-            <span>{avgStarRating} <span className='star-container'><i className="fa-solid fa-star"></i></span> • {numReviews} reviews </span>
+            <span className='review-stars-rating'>
+            {
+            avgStarRating
+                ?
+                    <>
+                        <span className='star-container'>
+                            <i className="fa-solid fa-star"> </i>
+                        </span>
+                        <span className='avg-review-data'>• {avgStarRating.toFixed(2) + " •"} {numReviews} reviews
+                        </span>
+                    </>
+                : null
+            }
+            </span>
             <div className="review-cards-container">
                 {
                     reviews.length

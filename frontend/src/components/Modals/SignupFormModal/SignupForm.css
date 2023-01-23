@@ -1,3 +1,36 @@
-.signup-form-data{
-    border: 2px solid black;
+.signup-form{
+    width: 30%;
+    border:none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
+
+.signup-form-data {
+    height: 30px;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    align-self: center;
+
+}
+
+.log-in-button{
+    align-self: center;
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+
+}
+
+/*
+.form-field-container {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-content: space-between;
+    align-items: center;
+
+} */

@@ -1,0 +1,24 @@
+.form-field-container {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+textarea.comment-input {
+    height: 100px;
+}
+
+
+.add-review-form-data {
+    height: 30px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+}

@@ -35,7 +35,7 @@ const ReviewForm = () => {
 
     useEffect(() => {
         const formErrors = [];
-        if (!comment) formErrors.push('Review may not be left blank.');
+        if (comment.length < 29) formErrors.push('To encourage meaningful reviews, we require they be more than thirty characters');
         if (stars < 1 || stars > 5) formErrors.push('Number of stars must be between one and five!');
 
         setErrors(formErrors);
@@ -61,36 +61,42 @@ const ReviewForm = () => {
 
         <>
             <h1>Add A Review</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
+            <form className='general-form' onSubmit={handleSubmit}>
+                <ul className='errors'>
                     {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null}
                 </ul>
 
-                <label>
-                    {'Stars '}
+                <div className="form-field-container">
+                    <label>Stars</label>
                     <input
                         type='number'
                         value={stars}
                         onChange={e => setStars(e.target.value)}
                         required
-                        className='add-review-form-data'
+                        className='add-review-form-data stars-input'
                         max='5'
                         min='1'
                     />
-                </label>
+                </div>
 
-                <label>
-                    {'Leave A Comment '}
-                    <input
-                        type='text'
+                <div className="form-field-container">
+                    <label>Leave A Comment</label>
+                    <textarea
+                        type='text-field'
                         value={comment}
                         onChange={e => setComment(e.target.value)}
                         required
-                        className='add-review-form-data'
+                        className='add-review-form-data comment-input'
                     />
-                </label>
+                </div>
 
-                <button type='submit' className='add-review-button'>Add Review</button>
+
+                <button
+                type='submit'
+                className='manage-button add-review-button'
+                disabled={errors.length > 0}>
+                    Add Review
+                </button>
 
             </form>
         </>

@@ -4,8 +4,10 @@ import {useHistory, useParams} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { thunkDeleteReview, thunkFetchSpotReviews } from "../../../store/reviews";
 
-
 import './ReviewCard.css'
+
+
+
 const ReviewCard = ({review, sessionUser}) => {
 
     const {spotId} = useParams();
@@ -41,10 +43,10 @@ const ReviewCard = ({review, sessionUser}) => {
 
                     ?
                     <span className='review-session-user-buttons'>
-                        <button onClick={handleDeleteClick} className='delete-review-button'>
+                        <button onClick={handleDeleteClick} className='delete-review-button manage-button'>
                             <i className="fa-regular fa-trash-can"></i>
                         </button>
-                        <button onClick={handleEditClick} className='delete-review-button'>
+                        <button onClick={handleEditClick} className='edit-review-button manage-button'>
                             <i className="fa-solid fa-pen-fancy"></i>
                         </button>
                     </span>
@@ -53,7 +55,7 @@ const ReviewCard = ({review, sessionUser}) => {
                 }
 
             </div>
-            <p className = 'review'>{review.review}</p>
+            <p className ='review-text'>{review.review}</p>
 
         </div>
 

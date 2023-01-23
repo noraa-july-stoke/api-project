@@ -42,14 +42,14 @@ const SignupFormModal = () => {
 
     return (
         <>
-        <h1>Sign Up</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='general-form signup-form'>
+                <h1>Sign Up</h1>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
 
-            <label>
-                Email
+                <div className="form-field-container">
+                <label>Email</label>
                 <input
                     type="text"
                     value={email}
@@ -57,10 +57,10 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-            </label>
+                </div>
 
-            <label>
-                Username
+                <div className="form-field-container">
+                    <label>Username</label>
                 <input
                     type="text"
                     value={username}
@@ -68,10 +68,11 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-            </label>
+                </div>
 
-            <label>
-                First Name
+            <div className="form-field-container">
+
+            <label>First Name</label>
                 <input
                     type="text"
                     value={firstName}
@@ -79,10 +80,10 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-            </label>
+                </div>
 
-            <label>
-                Last Name
+                <div className="form-field-container">
+                <label>Last Name</label>
                 <input
                     type="text"
                     value={lastName}
@@ -90,10 +91,10 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-            </label>
+                </div>
 
-            <label>
-                Password
+                <div className="form-field-container">
+                <label>Password</label>
                 <input
                     type="password"
                     value={password}
@@ -101,10 +102,10 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-            </label>
+                </div>
+            <div className="form-field-container">
+                <label> Confirm Password</label>
 
-            <label>
-                Confirm Password
                 <input
                     type="password"
                     value={confirmPassword}
@@ -112,9 +113,10 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-            </label>
+                </div>
 
-            <button type="submit" className="log-in-button">Sign Up</button>
+
+            <button type="submit" className="log-in-button manage-button">Sign Up</button>
 
         </form>
         </>

@@ -23,7 +23,7 @@ const LoginFormModal = () => {
 
     const handleDemoClick = e => {
         e.preventDefault();
-        setCredential('user1');
+        setCredential('userOne');
         setPassword('password')
     }
 

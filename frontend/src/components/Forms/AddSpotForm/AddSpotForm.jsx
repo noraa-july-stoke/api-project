@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import './AddSpotForm.css';
 
 //Local Module Imports
 // import * as sessionActions from "../../store/session";
@@ -85,13 +86,13 @@ const AddSpotForm = () => {
 
         <>
             <h1>Add Your Spot</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
+            <form onSubmit={handleSubmit} className='general-form'>
+                <ul className='errors'>
                     {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>): null}
                 </ul>
 
-                <label>
-                    {'Name '}
+                <div className="form-field-container">
+                <label className='form-label'> Name</label>
                     <input
                         type='text'
                         value={name}
@@ -99,10 +100,10 @@ const AddSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                </div>
 
-                <label>
-                    {'Street Address '}
+                <div className="form-field-container">
+                <label className='form-label'> Street Address </label>
                     <input
                         type='text'
                         value={address}
@@ -110,10 +111,10 @@ const AddSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                    </div>
 
-                <label>
-                    {'Price '}
+                <div className="form-field-container">
+                <label className='form-label'> Price </label>
                     <input
                         type='text'
                         value={price}
@@ -121,10 +122,14 @@ const AddSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                </div>
 
-                <label>
-                    {'City '}
+                <div className="form-field-container">
+
+                <label className='form-label'> City </label>
+
+
+
                     <input
                         type='text'
                         value={city}
@@ -132,10 +137,10 @@ const AddSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                    </div>
 
-                <label>
-                    {'State '}
+                <div className="form-field-container">
+                <label className='form-label'> State </label>
                     <input
                         type='text'
                         value={state}
@@ -143,10 +148,10 @@ const AddSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                    </div>
 
-                <label>
-                    {'Country '}
+                <div className="form-field-container">
+                <label className='form-label'> Country  </label>
                     <input
                         type='text'
                         value={country}
@@ -154,33 +159,35 @@ const AddSpotForm = () => {
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                    </div>
 
-                <label>
-                    {'Description '}
-                    <input
+                <div className="form-field-container">
+                <label className='form-label'>Description</label>
+
+                    <textarea
                         type='text'
                         value={description}
                         onChange={e => setDescription(e.target.value)}
                         required
-                        className='add-spot-form-data'
+                        className='add-spot-form-data description-input'
                     />
-                </label>
+                    </div>
 
-                <label>
-                    {'Add an initial image '}
+
+                <div className="form-field-container">
+                <label>Add an initial image</label>
                     <input
-                        type='text'
+                        type='url'
                         value={imgUrl}
                         onChange={e => setImgUrl(e.target.value)}
                         required
                         className='add-spot-form-data'
                     />
-                </label>
+                    </div>
 
                 <button
                     type='submit'
-                    className='add-spot-button'
+                    className='add-spot-button manage-button'
                     disabled={errors.length > 0}
                 >
                     Add Spot

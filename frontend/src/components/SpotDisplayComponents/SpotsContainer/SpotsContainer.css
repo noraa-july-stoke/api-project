@@ -1,8 +1,12 @@
 .spots-display{
-    width: 100%;
+    width: auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    margin: auto;
-    justify-content: center;
+    margin-left: 80px;
+    margin-right: 80px;
+    justify-content: space-between;
+    align-content: space-between;
+    /* border: 1px solid black; */
+    gap: 10px;
 }

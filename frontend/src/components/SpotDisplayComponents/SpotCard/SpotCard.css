@@ -1,6 +1,6 @@
 .spot-card-image{
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     border-radius: 10px;
     object-fit:cover;
 }
@@ -10,8 +10,6 @@
     flex-direction: column;
     width: fit-content;
     font-size: .9em ;
-    padding: .5em;
-    min-width: 250px;
 }
 
 .spot-city-state-rating{
@@ -19,4 +17,24 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+}
+
+.star-container{
+    font-size: 10px;
+}
+
+.spot-avg-rating{
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    align-items: center;
+    font-weight: 400;
+}
+
+.night-text{
+    font-weight: 400;
+}
+
+.price-per-day{
+    font-weight: 700;
 }

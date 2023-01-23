@@ -1,7 +1,31 @@
-.star-container{
+/* .star-container{
     font-size: 12px;
-}
+} */
 
 /* .hidden{
     display: none
 } */
+.avg-review-data{
+    font-weight: 700;
+}
+
+.review-stars-rating{
+    font-weight: 700;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.reviews-display{
+    align-items: center;
+    width: 100%;
+    margin: 20px;
+    border-top: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { thunkSingleSpotFetch } from '../../../store/spots';
 import SpotImagesDisplay from '../SpotImagesDisplay/SpotImagesDisplay';
 import SpotReviewsDisplay from '../../ReviewsDisplayComponents/SpotReviewsDisplay';
+import './SingleSpotPage.css';
 
 
 const SingleSpotPage = () => {
@@ -27,14 +28,22 @@ const SingleSpotPage = () => {
     if (spot) {
 
         return (
-            <>
             <div className='single-spot-page-container'>
-                <h1>{spot.name}</h1>
-                <div className='spot-details-container'>
-                    <span className='single-spot-info'>{spot.avgStarRating || 'No Review Data'}</span>
-                    <span className='single-spot-info'>{spot.numReviews || 'No Review Data'}</span>
-                    <span className='single-spot-info'>{'AwesomeHost'}</span>
-                    <span className='single-spot-info'>{spot.city}, {spot.state}, {spot.country}</span>
+                <div className='spot-name-details'>
+                    <span className='spot-name'><h2 className='spot-name'>{spot.name}</h2><div></div></span>
+                    <div className='spot-details-container'>
+                        <span className='single-spot-info'>
+                            {
+                            spot.avgStarRating
+                                ? <><span className='star-container'>
+                                    <i className="fa-solid fa-star"> </i>
+                                    </span>{spot.avgStarRating.toFixed(1)} {spot.numReviews + " Reviews • " || 'No Review Data'}</>
+                                : false || 'No Review Data'}
+                        </span>
+                    <span className='single-spot-info'>{'AwesomeHost • '}</span>
+                    <span className='single-spot-info'>{" " +spot.city}, {spot.state}, {spot.country}</span>
+
+                </div>
                     <SpotImagesDisplay images={spot.SpotImages} />
 
                 </div>
@@ -43,15 +52,15 @@ const SingleSpotPage = () => {
                     sessionUser && sessionUser.id === spot.ownerId
                         ?
                             <div>
-                                <button onClick={handleManageClick}>Manage this spot</button>
+                                <button className='manage-button' onClick={handleManageClick}>Manage this spot</button>
                             </div>
 
                         : null
                 }
 
-            </div>
+
                 <SpotReviewsDisplay />
-            </>
+                </div>
 
     )} else return null;
 
