@@ -94,4 +94,15 @@ button{
     background-color: #0000;
     border: none;
     padding: 0;
+    transition: background-color 0.2s ease-in;
+}
+
+button:hover {
+  background-color: rgba(205, 205, 205, 0.3);
+}
+
+button:active {
+  background-color: rgba(205, 205, 205, 0.5);
+  box-shadow: 0 5px #666;
+  transform: translateY(2px);
 }

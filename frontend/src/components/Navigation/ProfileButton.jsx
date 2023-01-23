@@ -53,11 +53,12 @@ function ProfileButton({ user }) {
                 user
                 ? (
                     <>
-                        <li>{user.username}</li>
-                        <li>{user.firstName} {user.lastName}</li>
-                        <li>{user.email}</li>
+                        <li className='host-spot-link border-bottom'>{user.email}</li>
                         <li>
                             <NavLink to='/your-spots'>Your Spots</NavLink>
+                        </li>
+                        <li className='border-bottom'>
+                            <NavLink className='host-spot-link-dropdown' to='/add-spot'>Host An Adventure</NavLink>
                         </li>
                         <li>
                             <button onClick={logout}>Log Out</button>
