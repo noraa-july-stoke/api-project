@@ -89,8 +89,8 @@ const EditSpotForm = () => {
     return (
 
         <>
-            <h1>Modify A Field To Edit </h1>
             <form onSubmit={handleSubmit} className='general-form'>
+                <h2> Modify A Field & Save To Edit </h2>
                 <ul className='errors'>
                     {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null}
                 </ul>

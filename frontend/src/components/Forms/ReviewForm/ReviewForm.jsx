@@ -59,8 +59,9 @@ const ReviewForm = () => {
     return (
 
         <>
-            <h1>Add A Review</h1>
+
             <form className='general-form' onSubmit={handleSubmit}>
+                <h2>Add A Review</h2>
                 <ul className='errors'>
                     {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null}
                 </ul>

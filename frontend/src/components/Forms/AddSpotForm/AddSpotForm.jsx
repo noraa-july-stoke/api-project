@@ -85,8 +85,9 @@ const AddSpotForm = () => {
     return (
 
         <>
-            <h1>Add Your Spot</h1>
+
             <form onSubmit={handleSubmit} className='general-form'>
+                <h2>Add Your Spot</h2>
                 <ul className='errors'>
                     {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>): null}
                 </ul>

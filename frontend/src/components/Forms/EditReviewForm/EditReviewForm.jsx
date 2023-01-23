@@ -64,8 +64,9 @@ const EditReviewForm = () => {
     return (
 
         <>
-            <h4>Edit Your Review for {spot.name}</h4>
+
             <form className='general-form' onSubmit={handleSubmit}>
+                <h2>Edit Your Review for {spot.name}</h2>
                 <ul className='errors'>
                     {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null}
                 </ul>

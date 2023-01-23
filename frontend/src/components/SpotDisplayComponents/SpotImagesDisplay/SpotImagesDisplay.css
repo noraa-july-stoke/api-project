@@ -1,47 +1,50 @@
 .spot-images-display-container{
-        max-height: 40vh;
+        height: 50vh;
         max-width: 60vw;
         display: flex;
         flex-direction: row;
         overflow: hidden;
         border-radius: 15px;
+        justify-content: space-between;
+        gap: 10px
         /* border: 1px solid black; */
 }
 
 .preview-image-container{
-    max-width: 50%;
+    width: 50%;
     overflow: hidden;
 }
 
 .preview-image{
     margin: auto;
-    /* width: stretch; */
+    width: fill;
+    height: fill;
 }
 
 .spot-image{
     margin: auto;
-    width: stretch;
-
+    width: fill;
+    height: fill;
 }
 
 .spot-images-container{
-        max-width: 50%;
+        width: 50%;
         overflow: hidden;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-content: space-between;
-
+        justify-content: space-between;
+        /* gap: 5px; */
 }
 
 .spot-image-container {
-    max-width: 48%;
-    max-height: 48%;
+    width: 49%;
+    height: 49%;
     overflow: hidden;
-    margin: auto;
 }
 
-
+/*
 .spots-display {
     width: auto;
     display: flex;
@@ -51,6 +54,6 @@
     margin-right: 80px;
     justify-content: space-between;
     align-content: space-between;
-    /* border: 1px solid black; */
+    border: 1px solid black;
     gap: 10px;
-}
+} */

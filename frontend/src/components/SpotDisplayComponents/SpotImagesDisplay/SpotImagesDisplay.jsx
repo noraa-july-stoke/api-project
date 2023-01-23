@@ -26,7 +26,6 @@ const SpotImagesDisplay = ({images}) => {
                     <div className="spot-image-container">
                         <img className='spot-image' src={previewImage.url} alt="a house" />
                     </div>
-
             </div>
         </div>
         </>
