@@ -11,6 +11,7 @@
 }
 
 .preview-image-container{
+    height: 100%;
     width: 50%;
     overflow: hidden;
 }
@@ -28,6 +29,7 @@
 }
 
 .spot-images-container{
+        height: 100%;
         width: 50%;
         overflow: hidden;
         display: flex;
