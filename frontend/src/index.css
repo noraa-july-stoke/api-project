@@ -15,7 +15,13 @@
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+        -webkit-transition: all 200ms ease;
+          -moz-transition: all 200ms ease;
+          -ms-transition: all 200ms ease;
+          -o-transition: all 200ms ease;
+          transition: all 200ms ease;
 }
+
 
 /*
   3. Allow percentage-based heights in the application
@@ -31,7 +37,7 @@ body {
   5. Improve text rendering
 */
 body {
-    line-height: 1.5;
+    /* line-height: 1.5; */
     -webkit-font-smoothing: antialiased;
 }
 
@@ -77,3 +83,14 @@ h6 {
 #__next {
     isolation: isolate;
 }
+
+a{
+      color: #000;
+      text-decoration: none;
+}
+
+/* button{
+    background-color: none;
+    border: none;
+    padding: 0;
+} */
