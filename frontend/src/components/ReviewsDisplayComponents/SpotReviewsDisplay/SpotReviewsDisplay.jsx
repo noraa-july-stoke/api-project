@@ -33,6 +33,7 @@ const SpotReviewsDisplay = () => {
 
     let reviewButton
     let userReview;
+    const reviewButtonText = userReview !== undefined ? "Spot alreaady reviewed" : "Leave Review"
 
     if (sessionUser) {
         userReview = reviews.find((review) => review.userId === sessionUser.id);
@@ -50,7 +51,6 @@ const SpotReviewsDisplay = () => {
         } else reviewButton = null;
     }
 
-    const reviewButtonText = userReview !== undefined ? "Spot alreaady reviewed" : "Leave Review"
 
 
 

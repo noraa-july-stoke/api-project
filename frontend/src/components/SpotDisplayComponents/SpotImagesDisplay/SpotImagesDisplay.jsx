@@ -15,16 +15,16 @@ const SpotImagesDisplay = ({images}) => {
             </div>
             <div className="spot-images-container">
                     <div className="spot-image-container">
-                        <img className='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
+                        <img className='spot-image' src={previewImage.url} alt="a house" />
                     </div>
                     <div className="spot-image-container">
-                        <img className='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
+                        <img className='spot-image' src={previewImage.url} alt="a house" />
                     </div>
                     <div className="spot-image-container">
-                        <img className='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
+                        <img className='spot-image' src={previewImage.url} alt="a house" />
                     </div>
                     <div className="spot-image-container">
-                        <img className='spot-image' src="https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="a house" />
+                        <img className='spot-image' src={previewImage.url} alt="a house" />
                     </div>
 
             </div>

@@ -43,8 +43,10 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button className='profile-menu-icons-container' onClick={openMenu}>
-                <i className="fa-solid fa-bars"></i> <i className="fas fa-user-circle" />
+            <button className='profile-menu-icons-button' onClick={openMenu}>
+                <i className="fa-solid fa-bars"></i>
+                <div className="spacer"></div>
+                <i className="fas fa-user-circle" />
             </button>
             <ul className={ulClassName} ref={ulRef}>
                 {
@@ -54,9 +56,6 @@ function ProfileButton({ user }) {
                         <li>{user.username}</li>
                         <li>{user.firstName} {user.lastName}</li>
                         <li>{user.email}</li>
-                        <li>
-                            <NavLink to='/add-spot'>List A Spot</NavLink>
-                        </li>
                         <li>
                             <NavLink to='/your-spots'>Your Spots</NavLink>
                         </li>
@@ -72,6 +71,7 @@ function ProfileButton({ user }) {
                             onItemClick={closeMenu}
                             modalComponent={<LoginFormModal />}
                         />
+
                         <OpenModalMenuItem
                             itemText="Sign Up"
                             onItemClick={closeMenu}
