@@ -43,6 +43,7 @@ const SingleSpotPage = () => {
                     <span className='single-spot-info'>{'AwesomeHost • '}</span>
                     <span className='single-spot-info'>{" " +spot.city}, {spot.state}, {spot.country}</span>
 
+
                 </div>
                     <SpotImagesDisplay images={spot.SpotImages} />
 
@@ -57,6 +58,9 @@ const SingleSpotPage = () => {
 
                         : null
                 }
+                <div className='spot-description'>
+                    {spot.description}
+                </div>
 
 
                 <SpotReviewsDisplay />
