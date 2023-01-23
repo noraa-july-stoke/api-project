@@ -22,15 +22,15 @@ module.exports = {
     */
     await queryInterface.bulkInsert(options, [
       {
-        ownerId: 1,
+        ownerId: 2,
         address: "123 Shady Lane",
         city: "Nowhereville",
         state: "New York",
         country: "United States of America",
         lat: 41.0259,
         lng: -71.9670,
-        name: "Spot 1",
-        description: "A cute little spot",
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
         price: 100
       },
       {
@@ -41,20 +41,20 @@ module.exports = {
         country: "United States of America",
         lat: 41.0260,
         lng: -71.9680,
-        name: "Spot 2",
-        description: "A cute little spot",
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
         price: 110
       },
       {
-        ownerId: 2,
+        ownerId: 1,
         address: "121 Shady Lane",
         city: "Nowhereville",
         state: "New York",
         country: "United States of America",
         lat: 41.0270,
         lng: -71.9640,
-        name: "Spot 3",
-        description: "A cute little spot",
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
         price: 120
       },
       {
@@ -65,20 +65,92 @@ module.exports = {
         country: "United States of America",
         lat: 41.0270,
         lng: -71.9640,
-        name: "Spot 4",
-        description: "A cute little spot",
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
         price: 120
       },
       {
-        ownerId: 3,
-        address: "119 Shady Lane",
+        ownerId: 2,
+        address: "106 Shady Lane",
         city: "Nowhereville",
         state: "New York",
         country: "United States of America",
         lat: 41.0270,
         lng: -71.9640,
-        name: "Spot 5",
-        description: "A cute little spot",
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
+        price: 120
+      },
+      {
+        ownerId: 2,
+        address: "105 Shady Lane",
+        city: "Nowhereville",
+        state: "New York",
+        country: "United States of America",
+        lat: 41.0270,
+        lng: -71.9640,
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
+        price: 120
+      },
+      {
+        ownerId: 1,
+        address: "104 Shady Lane",
+        city: "Nowhereville",
+        state: "New York",
+        country: "United States of America",
+        lat: 41.0270,
+        lng: -71.9640,
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
+        price: 120
+      },
+      {
+        ownerId: 1,
+        address: "103 Shady Lane",
+        city: "Nowhereville",
+        state: "New York",
+        country: "United States of America",
+        lat: 41.0270,
+        lng: -71.9640,
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
+        price: 120
+      },
+      {
+        ownerId: 1,
+        address: "102 Shady Lane",
+        city: "Nowhereville",
+        state: "New York",
+        country: "United States of America",
+        lat: 41.0270,
+        lng: -71.9640,
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
+        price: 120
+      },
+      {
+        ownerId: 2,
+        address: "101 Shady Lane",
+        city: "Nowhereville",
+        state: "New York",
+        country: "United States of America",
+        lat: 41.0270,
+        lng: -71.9640,
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
+        price: 120
+      },
+      {
+        ownerId: 2,
+        address: "100 Shady Lane",
+        city: "Nowhereville",
+        state: "New York",
+        country: "United States of America",
+        lat: 41.0270,
+        lng: -71.9640,
+        name: "The House of Your Dreams",
+        description: "A cute little place to stage your perfect adventure",
         price: 120
       }
     ], {});

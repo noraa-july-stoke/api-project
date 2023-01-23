@@ -71,6 +71,30 @@ module.exports = {
         spotId: 5,
         url: "source.com/image",
         preview: false
+      }, {
+        spotId: 6,
+        url: "https://images.pexels.com/photos/1586298/pexels-photo-1586298.jpeg?auto=compress&cs=tinysrgb&w=800",
+        preview: true
+      }, {
+        spotId: 7,
+        url: "https://images.pexels.com/photos/1795508/pexels-photo-1795508.jpeg?auto=compress&cs=tinysrgb&w=800",
+        preview: true
+      }, {
+        spotId: 8,
+        url: "https://images.pexels.com/photos/4450429/pexels-photo-4450429.jpeg?auto=compress&cs=tinysrgb&w=800",
+        preview: true
+      }, {
+        spotId: 9,
+        url: "https://images.pexels.com/photos/2439595/pexels-photo-2439595.jpeg?auto=compress&cs=tinysrgb&w=800",
+        preview: true
+      }, {
+        spotId: 10,
+        url: "https://images.pexels.com/photos/3330118/pexels-photo-3330118.jpeg?auto=compress&cs=tinysrgb&w=800",
+        preview: true
+      }, {
+        spotId: 11,
+        url: "https://images.pexels.com/photos/2104151/pexels-photo-2104151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        preview: true
       }
     ]);
   },
