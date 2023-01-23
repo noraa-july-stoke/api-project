@@ -31,7 +31,7 @@ const LoginFormModal = () => {
         <>
         <h2 className='log-in'>Log In</h2>
         <form className='general-form' onSubmit={handleSubmit}>
-            <ul className='errors'>
+            <ul className='errors modal-errors'>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
 

@@ -1,16 +1,4 @@
-/* form{
 
-    border: 2px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.login-credential-field{
-    border: 2px solid black;
-} */
 
 .signup-form {
     width: 30%;
@@ -29,40 +17,17 @@
     align-self: center;
 
 }
-h2.log-in{
-    margin-left: 36%;
-}
-
-.log-in-button {
-    align-self: center;
-    height: fit-content;
-    width: fit-content;
-    position: absolute;
-    bottom: 3%;
-    left: 40%;
-
-}
-
-.demo-user{
-    width: fit-content;
-    left:40%;
-    margin-left: 28%
-}
 
 
-.form-field-container {
+
+
+
+
+.modal-form-field-container {
     display: flex;
     flex-direction: column;
     width: 20%;
     justify-content: space-between;
     align-items: center;
 
-}
-
-ul.errors {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
 }

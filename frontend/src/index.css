@@ -119,7 +119,8 @@ button:active {
 .general-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
+  align-items: center;
 }
 
 .manage-button {
@@ -134,4 +135,5 @@ button:active {
   margin: 5px;
   border-radius: 20px;
   box-shadow: 3px 3px 3px rgba(118, 118, 118, 0.3);
+  width: fit-content;
 }

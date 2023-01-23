@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: center;
 }
 
 .signup-form-data {
@@ -16,34 +15,20 @@
 
 }
 
-.log-in-button{
-    align-self: center;
-    height: fit-content;
-    width: fit-content;
-    position: absolute;
-    bottom: 3%;
-    left: 40%;
 
-}
-
-
-.form-field-container {
+.modal-form-field-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 20%;
     justify-content: space-between;
     align-items: center;
 
 }
 
-ul.errors{
-    width: 300px;
+
+ul.modal-errors{
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 30%;
-}
-
-.sign-up{
-    margin-left: 35%;
 }

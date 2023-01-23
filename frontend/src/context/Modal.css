@@ -21,11 +21,11 @@
 
 #modal-content {
     position: relative;
-    /* z-index: 1; */
     background-color: white;
     width: fit-content;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
     padding: 100px;
+    align-items: center;
 }

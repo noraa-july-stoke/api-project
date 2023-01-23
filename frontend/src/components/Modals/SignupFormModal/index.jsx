@@ -53,11 +53,10 @@ const SignupFormModal = () => {
             <h2 className='sign-up'>Sign Up</h2>
 
             <form onSubmit={handleSubmit} className='general-form signup-form'>
-            <ul className='errors'>
+            <ul className='errors modal-errors'>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
 
-                <div className="form-field-container">
                 <label>Email</label>
                 <input
                     type="text"
@@ -66,9 +65,7 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-                </div>
 
-                <div className="form-field-container">
                     <label>Username</label>
                 <input
                     type="text"
@@ -77,9 +74,7 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-                </div>
 
-            <div className="form-field-container">
 
             <label>First Name</label>
                 <input
@@ -89,9 +84,7 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-                </div>
 
-                <div className="form-field-container">
                 <label>Last Name</label>
                 <input
                     type="text"
@@ -100,9 +93,7 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-                </div>
 
-                <div className="form-field-container">
                 <label>Password</label>
                 <input
                     type="password"
@@ -111,8 +102,6 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-                </div>
-            <div className="form-field-container">
                 <label> Confirm Password</label>
 
                 <input
@@ -122,7 +111,6 @@ const SignupFormModal = () => {
                     required
                     className="signup-form-data"
                 />
-                </div>
 
 
             <button type="submit" className="log-in-button manage-button" disabled ={errors.length > 0}>Sign Up</button>
