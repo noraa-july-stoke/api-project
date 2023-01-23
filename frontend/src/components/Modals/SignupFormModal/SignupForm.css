@@ -41,5 +41,9 @@ ul.errors{
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    margin-left: 30%;
+}
+
+.sign-up{
+    margin-left: 35%;
 }

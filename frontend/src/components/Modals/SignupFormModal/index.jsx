@@ -49,8 +49,10 @@ const SignupFormModal = () => {
 
     return (
         <>
-        <h2 className='sign-up'>Sign Up</h2>
-        <form onSubmit={handleSubmit} className='general-form signup-form'>
+
+            <h2 className='sign-up'>Sign Up</h2>
+
+            <form onSubmit={handleSubmit} className='general-form signup-form'>
             <ul className='errors'>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>

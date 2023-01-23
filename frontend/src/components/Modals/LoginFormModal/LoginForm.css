@@ -21,13 +21,16 @@
     align-content: center;
 }
 
-.signup-form-data {
+.login-credential-field {
     height: 30px;
     border-radius: 20px;
     padding: 10px;
     margin: 10px;
     align-self: center;
 
+}
+h2.log-in{
+    margin-left: 36%;
 }
 
 .log-in-button {
@@ -38,6 +41,12 @@
     bottom: 3%;
     left: 40%;
 
+}
+
+.demo-user{
+    width: fit-content;
+    left:40%;
+    margin-left: 28%
 }
 
 

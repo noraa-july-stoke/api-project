@@ -29,7 +29,7 @@ const LoginFormModal = () => {
 
     return (
         <>
-        <h2>Log In</h2>
+        <h2 className='log-in'>Log In</h2>
         <form className='general-form' onSubmit={handleSubmit}>
             <ul className='errors'>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -53,7 +53,7 @@ const LoginFormModal = () => {
                     required
                     className="login-credential-field"
                 />
-            <button type='fill-demo-user' onClick={handleDemoClick}>Demo User</button>
+            <button type='fill-demo-user' className='manage-button demo-user' onClick={handleDemoClick}>Demo User</button>
             <button type="submit" className="log-in-button manage-button">Log In</button>
         </form>
         </>
