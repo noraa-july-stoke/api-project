@@ -24,7 +24,7 @@ const SpotReviewsDisplay = () => {
     useEffect(() => {
         dispatch(thunkFetchSpotReviews(spotId));
 
-    }, [dispatch, spotId]);
+    }, [dispatch, spotId,reviews]);
 
     const handleReviewClick = e => {
         history.push(`/create-review`);

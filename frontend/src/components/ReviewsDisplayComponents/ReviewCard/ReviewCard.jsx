@@ -20,7 +20,7 @@ const ReviewCard = ({review, sessionUser}) => {
     const handleDeleteClick = async e => {
         await dispatch(thunkDeleteReview(review.id));
         // await dispatch(thunkFetchSpotReviews(spotId));
-        history.push(`/spots/${spotId}`)
+        // history.push(`/spots`);
     }
 
     const handleEditClick = e => {
