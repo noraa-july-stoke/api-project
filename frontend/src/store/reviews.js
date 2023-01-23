@@ -1,5 +1,6 @@
 import { csrfFetch } from './csrf';
 import * as utils from './utils';
+import actionSpotsFetch from './spots';
 
 const FETCH_SPOT_REVIEWS = 'FETCH_SPOT_REVIEWS';
 const FETCH_USER_REVIEWS = 'FETCH_USER_REVIEWS';
@@ -54,18 +55,37 @@ export const thunkAddReview = (review, spotId) => async (dispatch) => {
         dispatch(actionFetchSpotReviews);
         // dispatch(actionFetchUserReviews);
         return data;
-    }}
+    }
+    else return null;
+};
 
-export const thunkDeleteReveiw = (reviewId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/spots/${reviewId}/`, {
+export const thunkEditReview = (review, reviewId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+            review: review.review,
+            stars: review.stars
+    })});
+
+    let data;
+
+    if (response.ok) {
+        data = await response.json();
+        dispatch(actionFetchSpotReviews);
+    }
+
+};
+
+export const thunkDeleteReview = (reviewId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/reviews/${reviewId}/`, {
         method: 'DELETE'
     });
     let data;
     if (response.ok) {
         data = await response.json();
-
-    }
-}
+        dispatch(actionFetchSpotReviews);
+        return data;
+}};
 
 // -------------------------------------------------------
 // Reviews Reducer

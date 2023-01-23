@@ -4,11 +4,13 @@ import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from "../Modals/LoginFormModal";
 import SignupFormModal from "../Modals/SignupFormModal";
+import { NavLink, useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
+    const history = useHistory();
 
     const openMenu = e => {
         if (showMenu) return;
@@ -32,6 +34,7 @@ function ProfileButton({ user }) {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.thunkLogout());
+        history.push('/')
         closeMenu();
     };
 
@@ -40,8 +43,8 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu}>
-                <i className="fas fa-user-circle" />
+            <button className='profile-menu-icons-container' onClick={openMenu}>
+                <i className="fa-solid fa-bars"></i> <i className="fas fa-user-circle" />
             </button>
             <ul className={ulClassName} ref={ulRef}>
                 {
@@ -51,6 +54,12 @@ function ProfileButton({ user }) {
                         <li>{user.username}</li>
                         <li>{user.firstName} {user.lastName}</li>
                         <li>{user.email}</li>
+                        <li>
+                            <NavLink to='/add-spot'>List A Spot</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/your-spots'>Your Spots</NavLink>
+                        </li>
                         <li>
                             <button onClick={logout}>Log Out</button>
                         </li>

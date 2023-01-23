@@ -15,12 +15,15 @@ import SingleSpotPage from "./components/SpotDisplayComponents/SingleSpotPage";
 import UserSpotsList from "./components/SpotDisplayComponents/UserSpotsList";
 import EditSpotForm from "./components/Forms/EditSpotForm/EditSpotForm";
 import ReviewForm from "./components/Forms/ReviewForm/ReviewForm";
+import EditReviewForm from "./components/Forms/EditReviewForm/EditReviewForm";
 
 import * as sessionActions from "./store/session.js";
+
 
 const App = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
 
   useEffect(() => {
     dispatch(sessionActions.thunkRestoreUser())
@@ -35,13 +38,16 @@ const App = () => {
           <Route exact path='/'>
             <SpotsContainer />
           </Route>
-          <Route path={'/spots/:spotId/edit'}>
-            <EditSpotForm />
+          <Route exact path='/spots'>
+            <SpotsContainer />
           </Route>
           <Route path='/spots/:spotId'>
             <SingleSpotPage />
+            <Route path={'/spots/:spotId/edit'}>
+              <EditSpotForm />
+            </Route>
           </Route>
-          <Route path='/create-review'>
+          <Route path='/create-review/'>
             <ReviewForm />
           </Route>
           <Route path='/add-spot'>
@@ -50,6 +56,10 @@ const App = () => {
           <Route path='/your-spots'>
             <UserSpotsList />
           </Route>
+          <Route path ='/reviews/:reviewId/edit'>
+            <EditReviewForm />
+          </Route>
+
         </Switch>
       )}
     </>

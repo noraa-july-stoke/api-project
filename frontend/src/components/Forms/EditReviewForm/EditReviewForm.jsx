@@ -1,4 +1,4 @@
-import './ReviewForm.css'
+import './EditReviewForm.css'
 
 /* --------------------------------------------------------
 Add A Spot
@@ -9,25 +9,29 @@ retrieve it, and make them edit or delete it instead of leaving a new one.
 
 //Node Library Imports
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { deNormalize } from '../../../store/utils';
 
 //Local Module Imports
 // import * as sessionActions from "../../store/session";
-import { thunkAddReview, thunkFetchSpotReviews } from '../../../store/reviews';
-
+import { thunkEditReview } from '../../../store/reviews';
 //Style Imports
 
 
 //React funcitonal Component that displays controlled inputs for user signup
-const ReviewForm = () => {
+const EditReviewForm = () => {
+
+    const {reviewId} = useParams();
 
     const dispatch = useDispatch();
     const spot = useSelector(store => store.spots.singleSpot);
+    const reviews = deNormalize(useSelector(store => store.reviews.spot));
+    const oldReview = reviews.find(review => +review.id === +reviewId);
 
-    const [comment, setComment] = useState('');
-    const [stars, setStars] = useState(1);
+    const [comment, setComment] = useState(oldReview.review);
+    const [stars, setStars] = useState(+oldReview.stars);
 
     const [errors, setErrors] = useState([]);
 
@@ -35,7 +39,7 @@ const ReviewForm = () => {
 
     useEffect(() => {
         const formErrors = [];
-        if (!comment) formErrors.push('Review may not be left blank.');
+        if (comment.length < 29) formErrors.push('To encourage meaningful reviews, we require they be more than thirty characters');
         if (stars < 1 || stars > 5) formErrors.push('Number of stars must be between one and five!');
 
         setErrors(formErrors);
@@ -52,15 +56,15 @@ const ReviewForm = () => {
                 stars: +stars
             }
 
-        await dispatch(thunkAddReview(review, spot.id));
-        // await dispatch(thunkFetchSpotReviews(spot.id));
-        history.push(`/spots/${spot.id}`)
-    }};
+            await dispatch(thunkEditReview(review, oldReview.id));
+            // await dispatch(thunkFetchSpotReviews(spot.id));
+            history.push(`/spots/${spot.id}`)
+        }};
 
     return (
 
         <>
-            <h1>Add A Review</h1>
+            <h4>Edit Your Review for {spot.name}</h4>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.length ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null}
@@ -90,7 +94,23 @@ const ReviewForm = () => {
                     />
                 </label>
 
-                <button type='submit' className='add-review-button'>Add Review</button>
+                <button
+                    type='submit'
+                    className='edit-review-button'
+                    disabled={errors.length > 0}
+                >
+                    Modify
+                </button>
+
+                <NavLink className="edit-review-navlink" exact to={'/'}>
+                    <i className="fa-solid fa-house">
+                    </i>
+                </NavLink>
+                <NavLink className="edit-review-navlink" to={`/spots/${spot.id}`}>
+                    <i className="fa-solid fa-circle-left">
+                        {" back"}
+                    </i>
+                </NavLink>
 
             </form>
         </>
@@ -99,4 +119,4 @@ const ReviewForm = () => {
 
 }
 
-export default ReviewForm;
+export default EditReviewForm;

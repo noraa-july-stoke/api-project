@@ -1,29 +1,30 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import { thunkSpotsFetch } from '../../store/spots';
+import favicon from './images/favicon.ico';
 import './Navigation.css';
 
 
 function Navigation({ isLoaded }) {
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+
 
     return (
         <ul id='navigation-container'>
             <li>
-                <NavLink exact to="/">Home</NavLink>
+                <NavLink exact to="/" className='nav-link'>
+                    <span className='nav-logo-home-container'>
+                        <img className='nav-logo' src={favicon} alt="Adventure Beds Logo" />
+                        <span className='home-logo-text'>AdventureBeds</span>
+                    </span>
+                </NavLink>
             </li>
             <li>
                 <ProfileButton user={sessionUser} />
             </li>
-            {isLoaded && sessionUser && (
-                <>
-                    <li>
-                        <NavLink to='/add-spot'>Add Your Spot!</NavLink>
-                        <NavLink to='/your-spots'>View Your Spots</NavLink>
-                    </li>
-                </>
-            )}
         </ul>
     )
 }

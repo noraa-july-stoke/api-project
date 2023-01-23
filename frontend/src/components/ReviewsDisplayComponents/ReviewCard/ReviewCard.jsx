@@ -1,13 +1,29 @@
 import { dateToParts } from "../../../store/utils";
-
-
+import { useState, useEffect } from 'react';
+import {useHistory, useParams} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { thunkDeleteReview, thunkFetchSpotReviews } from "../../../store/reviews";
 
 
 import './ReviewCard.css'
-const ReviewCard = ({review}) => {
+const ReviewCard = ({review, sessionUser}) => {
+
+    const {spotId} = useParams();
+
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const [day, month, year] = dateToParts(review.createdAt);
-    console.log(month,year)
+
+    const handleDeleteClick = async e => {
+        await dispatch(thunkDeleteReview(review.id));
+        // await dispatch(thunkFetchSpotReviews(spotId));
+        history.push(`/spots/${spotId}`)
+    }
+
+    const handleEditClick = e => {
+        history.push(`/reviews/${review.id}/edit`);
+    }
 
     return (
         <div className="review-card-container">
@@ -17,6 +33,22 @@ const ReviewCard = ({review}) => {
                     <h4>{review.User.firstName}</h4>
                     <span>{month} {year}</span>
                 </div>
+                {
+                    sessionUser.id === review.userId
+
+                    ?
+                    <span className='review-session-user-buttons'>
+                        <button onClick={handleDeleteClick} className='delete-review-button'>
+                            <i className="fa-regular fa-trash-can"></i>
+                        </button>
+                        <button onClick={handleEditClick} className='delete-review-button'>
+                            <i className="fa-solid fa-pen-fancy"></i>
+                        </button>
+                    </span>
+                    :
+                        null
+                }
+
             </div>
             <p className = 'review'>{review.review}</p>
 

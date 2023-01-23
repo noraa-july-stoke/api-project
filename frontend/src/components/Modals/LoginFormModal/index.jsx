@@ -58,6 +58,7 @@ const LoginFormModal = () => {
             <button type="submit" className="log-in-button">Log In</button>
         </form>
         </>
+
 )};
 
 export default LoginFormModal;

@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { thunkSingleSpotFetch } from '../../../store/spots';
 import SpotImagesDisplay from '../SpotImagesDisplay/SpotImagesDisplay';
@@ -11,10 +11,9 @@ import SpotReviewsDisplay from '../../ReviewsDisplayComponents/SpotReviewsDispla
 const SingleSpotPage = () => {
     const { spotId } = useParams();
     const history = useHistory();
-
     const dispatch = useDispatch();
     const spot = useSelector(store => store.spots.singleSpot);
-    const sessionUser = useSelector(store=> store.session.user);
+    const sessionUser = useSelector(store => store.session.user);
 
 
     useEffect(() => {
@@ -24,10 +23,6 @@ const SingleSpotPage = () => {
     const handleManageClick = e => {
         history.push(`/spots/${spot.id}/edit`);
     };
-
-    const handleReviewClick = e => {
-       history.push('/create-review');
-    }
 
     if (spot) {
 
@@ -51,15 +46,6 @@ const SingleSpotPage = () => {
                                 <button onClick={handleManageClick}>Manage this spot</button>
                             </div>
 
-                        : null
-                }
-
-                {
-                    sessionUser && sessionUser.id !== spot.ownerId
-                        ?
-                        <div>
-                            <button onClick = {handleReviewClick}>Leave A Review</button>
-                        </div>
                         : null
                 }
 

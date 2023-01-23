@@ -178,7 +178,13 @@ const AddSpotForm = () => {
                     />
                 </label>
 
-                <button type='submit' className='add-spot-button'>Add Spot</button>
+                <button
+                    type='submit'
+                    className='add-spot-button'
+                    disabled={errors.length > 0}
+                >
+                    Add Spot
+                </button>
 
             </form>
         </>

@@ -3,17 +3,45 @@
     border: 1px solid black;
 } */
 
+/* *{
+    border: 1px solid black;
+} */
+
 .hidden {
     display: none;
 }
 
 
-ul > li {
+/* ul > li {
     padding: 3px;
-}
+} */
+
 
 #navigation-container {
     display: flex;
     flex-direction: row;
     list-style: none;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+}
+
+
+.nav-logo{
+    width: 60px;
+    height: 60px;
+    padding: 7px;
+}
+
+.nav-logo-home-container{
+    display: flex;
+}
+
+.home-logo-text{
+    font-size:40px;
+    font-weight:800;
+    color: #FF5A5F;
+}
+
+.nav-link{
+    text-decoration: none;
 }
