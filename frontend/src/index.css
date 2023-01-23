@@ -87,10 +87,11 @@ h6 {
 a{
       color: #000;
       text-decoration: none;
+      cursor: pointer
 }
 
-/* button{
-    background-color: none;
+button{
+    background-color: #0000;
     border: none;
     padding: 0;
-} */
+}
