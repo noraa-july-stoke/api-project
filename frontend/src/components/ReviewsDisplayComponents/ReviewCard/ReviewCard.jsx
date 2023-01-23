@@ -25,6 +25,9 @@ const ReviewCard = ({review, sessionUser}) => {
         history.push(`/reviews/${review.id}/edit`);
     }
 
+
+
+
     return (
         <div className="review-card-container">
             <div className='user-date-pic-container'>
@@ -34,7 +37,7 @@ const ReviewCard = ({review, sessionUser}) => {
                     <span>{month} {year}</span>
                 </div>
                 {
-                    sessionUser.id === review.userId
+                     sessionUser && sessionUser.id === review.userId
 
                     ?
                     <span className='review-session-user-buttons'>

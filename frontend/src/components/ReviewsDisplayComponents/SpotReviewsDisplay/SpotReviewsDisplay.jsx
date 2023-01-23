@@ -20,22 +20,38 @@ const SpotReviewsDisplay = () => {
     const {avgStarRating, numReviews} = useSelector(store => store.spots.singleSpot);
     const reviews = utils.deNormalize(reviewsObj);
 
-    let userReview = reviews.find((review) => review.userId === sessionUser.id);
-    // const addReviewClassName = "add-review-button" + (userReview ? " hidden" : "");
-    // console.log(addReviewClassName);
-
 
     useEffect(() => {
         dispatch(thunkFetchSpotReviews(spotId));
 
     }, [dispatch, spotId]);
 
-    const reviewButtonText = userReview !== undefined ? "Spot alreaady reviewed" : "Leave Review"
-
     const handleReviewClick = e => {
         history.push(`/create-review`);
     }
-    console.log(sessionUser, spot)
+    console.log(sessionUser, spot);
+
+    let reviewButton
+    let userReview;
+
+    if (sessionUser) {
+        userReview = reviews.find((review) => review.userId === sessionUser.id);
+        if (sessionUser.id !== spot.ownerId ) {
+            reviewButton =
+            <div className="yo">
+                <button
+                    onClick={handleReviewClick}
+                    disabled={userReview !== undefined}
+                >
+                    {reviewButtonText}
+                    <i className="fa-regular fa-pen-to-square"></i>
+                </button>
+            </div>
+        } else reviewButton = null;
+    }
+
+    const reviewButtonText = userReview !== undefined ? "Spot alreaady reviewed" : "Leave Review"
+
 
 
 
@@ -52,18 +68,20 @@ const SpotReviewsDisplay = () => {
                 }
             </div>
             {
-                sessionUser && sessionUser.id !== spot.ownerId
-                    ?
-                    <div className="yo">
-                        <button
-                            onClick={handleReviewClick}
-                            disabled={userReview !== undefined}
-                        >
-                            {reviewButtonText}
-                            <i className="fa-regular fa-pen-to-square"></i>
-                            </button>
-                    </div>
-                    : null
+                reviewButton
+
+                // sessionUser && sessionUser.id !== spot.ownerId
+                //     ?
+                //     <div className="yo">
+                //         <button
+                //             onClick={handleReviewClick}
+                //             disabled={userReview !== undefined}
+                //         >
+                //             {reviewButtonText}
+                //             <i className="fa-regular fa-pen-to-square"></i>
+                //             </button>
+                //     </div>
+                //     : null
             }
         </div>
 
